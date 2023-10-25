@@ -1,20 +1,30 @@
-# Introduzione a C++
+# Introduzione a C++ (per programmazione competitiva)
 
-Il programma di base, qui di seguito, non fa niente. Scriveremo le istruzioni da far eseguire al computer *all'interno del main*, ovvero sotto `int main() {` e sopra `}`. Per il momento si può ignorare tutto il resto (ovvero `#include ...` e `using ...`) e semplicemente darlo per buono. Si possono inserire commenti nei programmi con `// ...` per i commenti su una singola riga, oppure con `/* ... */` per i commenti su multiple righe.
-```cpp
+Il codice deve essere scritto in un __source file__ di estensione __.cpp__, __.cc__ o __.cxx__ per poi essere compilato da un compilatore (__g++__, __clang__ o quello incluso nei vari IDE).
+
+Skeleton funzionante che però non fa nulla:
+```c++
+// Questo è un commento su una riga. Inizia da '//' e termina a fine riga.
+/* Questo è un commento multiriga. Inizia da '/*' e termina con */
+
+// Includiamo all'interno del nostro programma tutta la libreria standard di C++
+// È un insieme di funzioni già implementate in maniera efficiente che quindi non dobbiamo scrivere noi.
+// 
+// In particolare contiene funzioni per IO (apertura file, scrittura e lettura), la definizione di alcune strutture dati che ci faranno comodo in futuro e funzioni matematiche.
 #include <bits/stdc++.h>
+
+// I `namespace` permettono di modularizzare il codice e di risolvere i conflitti fra i nomi di variabili, funzioni e tipi.
+// Tuttavia al nostro scopo non servono: tutti i simboli definiti nella libreria standard li utilizziamo direttamente.
 using namespace std;
 
-// questo e' un commento su una singola riga
-
-/* questo commento 
-occupa tante righe */
-
+// Questo è il punto in cui inizia il nostro codice.
+// È una `funzione` (particolare).
 int main() {
-	// il codice verra' scritto qui
+
+    // TODO: scrivere il codice qui.
+    
 }
 ```
-
 
 ## Scrivere a schermo
 
@@ -74,12 +84,30 @@ y = -7; // <- y ora contiene il valore -7
 cout << "x = " << x << "; y = " << y << ";" << endl;
 ```
 
+Oltre ai tipi di default visti sopra, è possibile definire anche tipi di dati strutturati (costituiti da più attributi di tipi differenti).
+```cpp
+// definisco un tipo strutturato che contiene un `int` di nome `primo_attributo` e un `float` di nome `secondo_attributo`.
+struct TipoStrutturato {
+    int primo_attributo;
+    float secondo_attributo;
+};
+
+// Data una variabile `tipo` di tipo `TipoStrutturato`
+TipoStrutturato tipo;
+// Posso accedere il suo `primo_attributo` con la cosiddetta dot-notation:
+tipo.primo_attributo;
+```
+I dati strutturati possono essere utili per associare dati che appartengono alla stessa 'entità'.
+
+Es: Abbiamo delle persone con una cera `altezza` e `peso`.
+Abbiamo un insieme di persone e le vogliamo ordinare in base al peso.
+È utile fare in modo che `altezza` e `peso` siano associate.
+
 #### Esercizi
 - Crea una variabile di un tipo a scelta, chiamala "variabile" e inizializzala con un valore a scelta. Scrivila in output, poi cambiala e scrivila in output di nuovo.
 
 
-## Prendere in i**n**put una variabile dall'utente
-###### Attenzione allo spelling di i**n**put ;-)
+## Prendere in input una variabile dall'utente
 
 Per ricevere un input dall'utente un valore e salvarlo in una variabile si usa l'istruzione `cin >> nomevariabile`. Anche in questo caso si può scrivere `>>` più volte.
 
