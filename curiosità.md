@@ -1,17 +1,17 @@
 # Curiosità & consigli
 ## IO
 ### `freopen`
-Molte delle piattaforme di programmazione competitiva forniscono l'input in un file 'input.txt' e si aspettano l'output su 'output.txt'.\
-È possibile reindirizzare `cin` e `cout` in modo che operino con __input.txt__.
+Molte delle piattaforme di programmazione competitiva forniscono l'input in un file _input.txt_ e si aspettano l'output su _output.txt_.\
+È possibile reindirizzare `cin` e `cout` in modo che operino con _input.txt_ e _output.txt_.
 Per fare ciò possiamo operare su `stdin` e `stdout`:
 ```cpp
-  // Siamo nel main.
+// Siamo nel main.
   
-  // Chiude l'`stdin` originale e lo riapre in lettura ('r'ead) su "input.txt".
-  freopen("input.txt", "r", stdin); // freopen: file re-open
+// Chiude l'`stdin` originale e lo riapre in lettura ('r'ead) su "input.txt".
+freopen("input.txt", "r", stdin); // freopen: file re-open
   
-  // Chiude l'`stdout` originale e lo riapre in lettura ('w'rite) su "output.txt".
-  freopen("output.txt", "w", stdout);
+// Chiude l'`stdout` originale e lo riapre in lettura ('w'rite) su "output.txt".
+freopen("output.txt", "w", stdout);
 ```
 ### `sync_with_stdio(false)`
 Per poter mischiare I/O C (`printf`, `scanf` ecc) con quello C++ (`cin`, `cout` ecc), il C++ ha previsto la sincronizzazione `stdin`/`cin` e `stdout`/`cout`.\
@@ -28,7 +28,7 @@ In seguito a questa chiamata è **importante non mischiare funzioni IO di C con 
 ### `tie`
 
 `stdout` è di default 'block-buffered', non presenta a schermo immediatamente ciò che viene scritto, ma attende che venga riempito un buffer, in modo da ridurre in numero di chiamate di sistema effettive per la stampa.\
-È possibile forzare lo svuotamento del buffer grazie a `cin << flush` oppure `fflush(stdout)`.\
+È possibile forzare lo svuotamento del buffer grazie a `cout << flush` oppure `fflush(stdout)`.\
 Sia dato questo codice:
 ```cpp
 cout << "Inserisci il numero di elementi: ";
