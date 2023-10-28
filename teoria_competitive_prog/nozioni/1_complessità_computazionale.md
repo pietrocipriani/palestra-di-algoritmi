@@ -18,7 +18,7 @@ La nostra concezione di complessità computazionale non sarà dunque mirata ad a
 
 Chiameremo `N` la "dimensione dell'input", il nome potrebbe variare in base al problema. Alcuni problemi potrebbero avere "più dimensioni".
 
-## I CASI
+## Casi ottimo, pessimo e medio
 Dati due input di **uguale dimensione** NON è detto che uno **stesso algoritmo** impieghi lo stesso tempo.\
 Ci sono alcuni input "più buoni di altri". I cosiddetti **caso ottimo**, **caso medio** e **caso pessimo** possono avere complessità differenti.
 
@@ -34,30 +34,35 @@ bool contiene(const vector<int>& v, int elemento) {
     return false;
 }
 ```
-`N` è la dimensione di `v` (`v.size()`).
+`N` è la dimensione di `v` (`v.size()`).\
 È possibile osservare che se l'elemento da cercare è in prima posizione, allora l'algoritmo terminerà subito. Questo è il caso **ottimo**.\
 Se l'elemento da cercare è in ultima posizione (o non esiste) allora l'algoritmo deve scorrere tutto il vettore prima di terminare. Questo è il caso **pessimo**.\
 Negli altri casi, in media, l'`elemento` si troverà all'incirca a metà del vettore. Questo NON è il caso **medio**.
 
 Il caso medio deve comprendere anche il caso ottimo e il caso pessimo. Tuttavia la media è relativa alla frequenza con cui possono avvenire certi eventi.
 In particolare bisognerebbe conoscere la probabilità con cui un elemento non si trova all'interno del vettore per conoscere l'impatto del caso pessimo.
-Non possiamo nemmeno dare per scontato che tutti gli elementi abbiano la stessa probabilità di dover essere cercati.\
+Non possiamo nemmeno dare per scontato che tutti gli elementi abbiano la stessa probabilità di dover essere cercati.
 
 Il caso medio è intrattabile.\
 Per quanto riguarda il caso ottimo: non possiamo aspettarci che il CMS (il programma che valuterà le soluzioni) sia così gentile da darci solo casi ottimi.\
 Quindi il nostro obiettivo sarà quello di ottimizzare il **caso pessimo**.
 
+## Come stabilire la classe di complessità
+
 L'algoritmo per la ricerca dell'elemento qui sopra, nel caso pessimo esegue le istruzioni nel ciclo `N` volte.\
 Facciamo che le istruzioni all'interno del ciclo impieghino un tempo `a`. Allora il tempo impiegato dal ciclo è di `N·a`.\
-Facciamo che le istruzioni all'esterno del ciclo impieghino un tempo `b`. Allora il tempo complessivo impiegato dalla funzione è `b + N·a`\
+Facciamo che le istruzioni all'esterno del ciclo impieghino un tempo `b`. Allora il tempo complessivo impiegato dalla funzione è `b + N·a`
+
 Il nostro scopo è vedere come si comporta la funzione per input MOOOLTO grandi: se N "diventa infinito" allora è intuitivo pensare che aggiungere una costante `b` sia ininfluente.\
-Quindi possiamo approssimare il tempo complessivo impiegato dalla funzione come `N·a`.\
+Quindi possiamo approssimare il tempo complessivo impiegato dalla funzione come `N·a`.
+
 Dal momento che, come detto precedentemente, non è così semplice calcolare il valore di `a`, possiamo tralasciare questa informazione. Otteniamo dunque `N`.\
-Indichiamo il fatto che si stia parlando di una approssimazione con la notazione Θ(N).\
+Indichiamo il fatto che si stia parlando di una approssimazione con la notazione Θ(N).
+
 Θ(N) non ci dice quanto ci metterà il nostro algoritmo, ma ci dà una buona indicazione di come cresce il tempo al crescere di `N`.\
 Con ragionamenti analoghi si può osservare che il **caso ottimo** è Θ(1). Il **caso medio**, sotto determinate ipotesi, è Θ(N).
 
-Possiamo creare una gerarchia fra le varie _classi di complessità_ ("migliori" a sinistra). Dal momento che una delle approssimazioni prevede "`N` molto grande", è chiaro che tale gerarchia non ci dia nessuna informazione su quale sia l'algoritmo migliore per `N` piccolo:
+Possiamo creare una gerarchia fra le varie _classi di complessità_ ("migliori" a sinistra). Dal momento che una delle approssimazioni prevede "`N` molto grande", è chiaro che tale gerarchia non ci dia nessuna informazione su quale sia l'algoritmo migliore per `N` piccolo:\
 Θ(1) « Θ(logN) « Θ(N) « Θ(N·logN) « Θ(N²) « Θ(N³) « Θ(N!) « Θ(N^N)
 
 `logN` è una funzione che molti di voi probabilmente non conoscono. Tuttavia è sufficiente sapere che è una funzione che cresce molto lentamente.\
