@@ -12,14 +12,14 @@ L'inizializzazione di una variabile di tipo `vector` si può fare nei seguenti m
 ## Accesso
 
 Per accedere agli elementi di un `vector` ci sono i seguenti modi:
-- `v[posizione]` si usa per accedere all'elemento in posizione `posizione-1`, poichè gli indici partono da `0` (funziona come per gli array normali, ad es. `v[0]` restituisce il primo elemento)
+- `v.at(posizione)` si usa per accedere all'elemento in posizione `posizione-1`, poichè gli indici partono da `0` (funziona come per gli array normali, ad es. `v.at(0)` restituisce il primo elemento)
 - `v.front()` si usa per accedere al primo elemento
 - `v.back()` si usa per accedere all'ultimo elemento
 
 ```cpp
 vector<int> pesi{4, 7, 9, 8};
 // scrive in output 4798 48
-cout << pesi[0] << pesi[1] << pesi[2] << pesi[3]
+cout << pesi.at(0) << pesi.at(1) << pesi.at(2) << pesi.at(3)
 	<< " " << pesi.front() << pesi.back() << endl;
 ```
 
@@ -27,6 +27,7 @@ cout << pesi[0] << pesi[1] << pesi[2] << pesi[3]
 
 - `v.push_back(ELEMENTO)` aggiunge `ELEMENTO` in fondo al vettore (ad es. `v.push_back(42.0)`)
 - `v.resize(NUOVA_DIMENSIONE, VALORE)` ridimensiona il vettore così che abbia `NUOVA_DIMENSIONE` elementi. Se `NUOVA_DIMENSIONE` è maggiore della dimensione che aveva precedentemente, i nuovi elementi vengono inizializzati col valore `VALORE`. (ad es. `v.resize(1000, 0)`)
+- `v.reserve(NUOVA_DIMENSIONE)` il vettore contiene ancora lo stesso numero di elementi precedenti, tuttavia ha allocato dello "spazio extra" per eventuali ridimensionamenti (vedasi dopo).
 - `v.pop_back()` rimuove l'ultimo elemento del vettore
 - `v.size()` restituisce il numero di elementi contenuti nel vettore
 
@@ -48,22 +49,56 @@ citta.pop_back(); // rimuovi l'ultimo elemento, cioe' "Bolzano"
 cout << citta.size() << " " << citta.front() << " " << citta.back() << endl;
 ```
 
+### Osservazioni
+La variabile di tipo `vector` salva nello stack solo le informazioni utili a conoscere la dimensione effettiva del vettore e la posizione nello heap del vettore stesso.
+`vector` memorizza gli elementi uno dietro l'altro in un'area contigua di memoria heap.
+
+Nella memoria heap abbiamo però detto che si può scrivere qualsiasi cosa, negli spazi vuoti.\
+Ipotizziamo dunque di voler fare un `push_back` quando è già stato scritto qualcos'altro poco dopo la fine del nostro vettore: per potersi ingrandire il `vector` è obbligato a dover cercare uno spazio vuoto più grande.
+Deve dunque **copiare** tutti gli elementi già presenti nella nuova area di memoria: ciò è MOLTO costoso, tuttavia il `vector` è stato pensato in modo da minimizzare il numero di ridimensionamenti, richiedendo un po' più di memoria.
+
+Tuttavia è buona pratica, quando si conosce il numero di elementi, dire al vettore quanto spazio occupare. Abbiamo 3 modi per farlo:
+- con il `reserve`: fintantochè il numero di elementi non supera la dimensione effettiva del vettore, chiamate a `push_back` non provocheranno nessuna copia (riallocamento).
+- Con il `resize`: il vettore acquisisce effettivamente una dimensione di `DIMENSIONE`, eventuali `push_back` cercheranno di incrementare **ulteriormente** la dimensione. In questo caso dovete limitarvi ad **assegnare** gli elementi già presenti!
+- In fase di dichiarazione, specificando `DIMENSIONE`. Valgono le stesse osservazioni di `resize`.
+
+Vedremo più avanti altri modi di implementare una lista di elementi (`vector` è una lista di elementi) in modo da ovviare alla problematica dell'allocazione (vengono introdotti altri problemi).
+
+> ndr: `list` in Python è un _array dinamico_: è implementato come un `vector`.
+
 ## Scorrere un vettore
 
 Per scorrere tutti gli elementi di un `vector` si può usare un normale `for` come si farebbe per gli array normali. La variabile `i` del ciclo va da `0` a `numeri.size()` (non compreso) e quindi tocca, in ordine, tutti gli elementi di `numeri`.
 ```cpp
 vector<float> numeri{3.14, 2.78, 1+2.1, 3*1.12};
 for(int i = 0; i < numeri.size(); ++i) {
-	cout << "In posizione " << i << " c'e' il numero " << numeri[i] << endl;
+	cout << "In posizione " << i << " c'e' il numero " << numeri.at(i) << endl;
 }
 ```
 
+Vi è un altro modo di iterare gli elementi dei vari contenitori: 
+```cpp
+vector<float> numeri{3.14, 2.78, 1+2.1, 3*1.12};
+
+// si legge come: "per ogni `numero` in `numeri`"
+for (float numero : numeri) {
+    // facciamo qualcosa con `numero`.
+}
+```
+Tale modalità di iterazione potrà essere più efficiente per certi tipi di collezioni che vedremo più avanti.\
+Tuttavia non permette di sapere a che elemento siamo arrivati (salvo contare manualmente in una variabile esterna).\
+In questo caso è possibile fare la copia di `numero` senza troppi problemi, dato che è un `float`.
+Nel caso `numero` fosse stato di un tipo molto più "grosso" è sicuramente meglio predere un **riferimento** (`TIPO& numero`).
+
 ## Passare un vettore ad una funzione
 
-Ovviamente i `vector` sono dei tipi come altri, quindi possono essere passati come parametro di una funzione senza problemi. Però, quando un parametro viene passato ad una funzione, esso viene copiato per fare in modo che la funzione non possa modificare la copia originale di quella variabile ma riceva una copia tutta per sè. Poichè i `vector` possono essere costosi da copiare, conviene prevenirlo mettendo una `&` dopo il tipo del parametro della funzione, per dire al compilatore di passare tale parametro *per reference*, ovvero non copiarlo. Però passare parametri alle funzioni senza copiarli può permettere alle funzioni di modificare le variabili che passiamo loro; se vogliamo evitare ciò (ad esempio perchè una funzione che scrive a schermo non deve modificare il contenuto del vettore che gli passiamo) possiamo mettere un `const` prima del tipo del parametro.
+Ovviamente i `vector` sono dei tipi come altri, quindi possono essere passati come parametro di una funzione senza problemi.
+Però, quando un parametro viene passato ad una funzione, esso viene copiato per fare in modo che la funzione non possa modificare la copia originale di quella variabile ma riceva una copia tutta per sè.
+Poichè i `vector` possono essere costosi da copiare, conviene prevenirlo mettendo una `&` dopo il tipo del parametro della funzione, per dire al compilatore di passare tale parametro *per reference*, ovvero non copiarlo.
+Però passare parametri alle funzioni senza copiarli può permettere alle funzioni di modificare le variabili che passiamo loro; se vogliamo evitare ciò (ad esempio perchè una funzione che scrive a schermo non deve modificare il contenuto del vettore che gli passiamo) possiamo mettere un `const` prima del tipo del parametro.
 ```cpp
 // quando questa funzione viene chiamata, il vettore passato
-// al posto di v viene copiato (operazione costosa)
+// al posto di `v` viene copiato (operazione costosa)
 void printVettore(vector<int> v) {
 	for (int i = 0; i < v.size(); ++i) {
 		cout << v << " ";
@@ -72,16 +107,16 @@ void printVettore(vector<int> v) {
 }
 
 // quando questa funzione viene chiamata, il vettore passato al posto
-// di v non viene copiato ma la funzione ne ha accesso diretto
+// di `v` non viene copiato ma la funzione ne ha accesso diretto
 void printVettoreOttimizzato(const vector<int>& v) {
-	// v.push_back(5); errore! v e' dichiarato const, quindi non puo' essere modificato 
+	v.push_back(5); // errore! `v` e' dichiarato const, quindi non puo' essere modificato 
 	for (int i = 0; i < v.size(); ++i) {
-		cout << v << " ";
+		cout << v << " "; // tuttavia possiamo leggerlo liberamente.
 	}
 	cout << endl;
 }
 
-// questa funzione aggiunge un elemento sia ad a che a b, ma solo
+// questa funzione aggiunge un elemento sia ad `a` che a `b`, ma solo
 // la modifica a b viene recepita dal chiamante, perche' a e'
 // stato copiato prima di venir modificato, b invece no.
 void modificaSecondoVettore(vector<int> a, vector<int>& b) {

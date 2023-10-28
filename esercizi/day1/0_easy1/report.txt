@@ -1,0 +1,5 @@
+                            random        crescent        decrescent
+
+0_soluzione_TN2_SN     :    350 ms        1h 15min          230 ms
+1_soluzione_TNlogN_SN  :    610 ms         350 ms           320 ms
+3_soluzione_TN_S1      :    260 ms         220 ms           230 ms

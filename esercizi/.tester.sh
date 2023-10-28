@@ -51,13 +51,15 @@ fi
 # file eseguibile derivato dalla compilazione di $SOURCE
 SOLVER="$TMPDIR/solver"
 
-if ! g++ -Wall -Wextra -Wpedantic -fsanitize=address -g "$SOURCE" -o "$SOLVER"
+if ! g++ -Wall -Wextra -Wpedantic -fsanitize=address -g "$SOURCE" -o "$SOLVER" -O2
 then
   echo "Errore durante la compilazione del file fornito." > /dev/stderr
   exit 1
 fi
 
 echo "Compilazione completata."
+
+size -d "$SOLVER"
 
 cd "$TMPDIR"
 
@@ -80,12 +82,12 @@ for file in $(ls -v $INPUTS/input*.txt); do
 
   rm -f "$TMPDIR/output.txt"
   cp "$file" "$TMPDIR/input.txt"
-  $SOLVER
+  /bin/time -f '%U s' -o "$TMPDIR/time.txt" $SOLVER
 
   if diff -qEZbB "$OUTPUT" "$TMPDIR/output.txt"
   then
-    echo -e "Test $NUMBER \e[1;32mOK\e[m"
+    echo -e "Test $NUMBER \e[1;32mOK\e[m in $(cat time.txt)."
   else
-    echo -e "Test $NUMBER \e[1;31mFAIL\e[m"
+    echo -e "Test $NUMBER \e[1;31mFAIL\e[m $(cat "$OUTPUT") vs $(cat "$TMPDIR/output.txt")"
   fi
 done
