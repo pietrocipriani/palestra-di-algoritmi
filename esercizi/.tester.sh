@@ -16,7 +16,7 @@ then
 fi
 
 # salviamo la cartella che contiene gli inputs/outputs.
-DIR="$(dirname "$SOURCE")"
+DIR="."
 # file zip contenente i test
 ZIP="$DIR/io.zip"
 

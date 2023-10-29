@@ -1,6 +1,6 @@
 # Complessità computazionale
 
-> :info: Questa è una trattazione informale, dato che l'utilizzo della notazione matematica potrebbe risultare un po' troppo pesante.
+> :information_source: Questa è una trattazione informale, dato che l'utilizzo della notazione matematica potrebbe risultare un po' troppo pesante.
 
 Molte piattaforme per la programmazione competitiva pongono dei limiti di tempo e di spazio agli algoritmi.
 Rendere la vita complicata ad algoritmi poco efficienti è proprio l'obiettivo di queste competizioni!
@@ -63,12 +63,21 @@ Indichiamo il fatto che si stia parlando di una approssimazione con la notazione
 Con ragionamenti analoghi si può osservare che il **caso ottimo** è Θ(1). Il **caso medio**, sotto determinate ipotesi, è Θ(N).
 
 Possiamo creare una gerarchia fra le varie _classi di complessità_ ("migliori" a sinistra). Dal momento che una delle approssimazioni prevede "`N` molto grande", è chiaro che tale gerarchia non ci dia nessuna informazione su quale sia l'algoritmo migliore per `N` piccolo:\
-Θ(1) « Θ(logN) « Θ(N) « Θ(N·logN) « Θ(N²) « Θ(N³) « Θ(N!) « Θ(N^N)
+Θ(1) « Θ(logN) « Θ(N) « Θ(N·logN) « Θ(N^a) « Θ(b^N) « Θ(N!) « Θ(N^N)
 
-`logN` è una funzione che molti di voi probabilmente non conoscono. Tuttavia è sufficiente sapere che è una funzione che cresce molto lentamente.\
+`logN` è detto "logaritmo di N", è una funzione che molti di voi probabilmente non conoscono. Tuttavia è sufficiente sapere che è una funzione che cresce molto lentamente.\
 `N!` è detto "N fattoriale" e significa `N·(N-1)·(N-2)· ... · 1`. È una funzione che cresce molto velocemente. Tuttavia non quanto `N^N`.
 
-In generale si ha Θ(N^1000) « Θ(N^1000 · logN) « Θ(N^1001)
+Durante il corso le classi di complessità potrebbero essere chiamate con questi nomi:
+- Θ(1)      : _costante_
+- Θ(logN)   : _logaritmica_
+- Θ(N)      : _lineare_
+- Θ(N·logN) : _quasi-lineare_
+- Θ(N^a)    : _polinomiale_
+- Θ(b^N)    : _esponenziale_
+- Θ(N!)     : _fattoriale_
 
+Vi sono anche altre classi. A noi interessano principalmente fino alla _polinomiale_. Non dovete impararle a memoria. Continueremo ad usare questi termini: prima o poi ve li ricorderete.
 
-
+Vi invito ad usare calcolatrici grafiche ([geogebra](https://www.geogebra.org/calculator), [desmos](https://www.desmos.com/calculator) ecc) per visualizzare l'andamento delle varie funzioni.\
+Potete anche inserire dei coefficienti per osservare che a lungo andare non cambiano la situazione.
