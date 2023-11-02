@@ -57,7 +57,7 @@ Il nostro scopo è vedere come si comporta la funzione per input MOOOLTO grandi:
 Quindi possiamo approssimare il tempo complessivo impiegato dalla funzione come `N·a`.
 
 Dal momento che, come detto precedentemente, non è così semplice calcolare il valore di `a`, possiamo tralasciare questa informazione. Otteniamo dunque `N`.\
-Indichiamo il fatto che si stia parlando di una approssimazione con la notazione Θ(N).
+Indichiamo il fatto che si stia parlando di una approssimazione con la notazione Θ(N) (Potreste trovarlo scritto come O(N) per comodità. Le due notazioni non sono equivalenti, ma per i nostri scopi possono essere interscambiate).
 
 Θ(N) non ci dice quanto ci metterà il nostro algoritmo, ma ci dà una buona indicazione di come cresce il tempo al crescere di `N`.\
 Con ragionamenti analoghi si può osservare che il **caso ottimo** è Θ(1). Il **caso medio**, sotto determinate ipotesi, è Θ(N).
