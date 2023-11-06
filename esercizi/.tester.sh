@@ -51,7 +51,7 @@ fi
 # file eseguibile derivato dalla compilazione di $SOURCE
 SOLVER="$TMPDIR/solver"
 
-if ! g++ -Wall -Wextra -Wpedantic -fsanitize=address -g "$SOURCE" -o "$SOLVER" -O2
+if ! g++ -Wall -Wextra -Wpedantic "$SOURCE" -o "$SOLVER" -O3
 then
   echo "Errore durante la compilazione del file fornito." > /dev/stderr
   exit 1
