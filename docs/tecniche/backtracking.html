@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html lang="in" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Backtracking - Palestra di Algoritmi</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduzione</a></li><li class="chapter-item expanded "><a href="../nozioni/index.html"><strong aria-hidden="true">1.</strong> Nozioni</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../nozioni/modello_memoria.html"><strong aria-hidden="true">1.1.</strong> Modello della memoria</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../nozioni/memoria/stack.html"><strong aria-hidden="true">1.1.1.</strong> Stack</a></li><li class="chapter-item expanded "><a href="../nozioni/memoria/heap.html"><strong aria-hidden="true">1.1.2.</strong> Heap</a></li></ol></li><li class="chapter-item expanded "><a href="../nozioni/complexity.html"><strong aria-hidden="true">1.2.</strong> Complessità computazionale</a></li></ol></li><li class="chapter-item expanded "><a href="../strutture_dati/index.html"><strong aria-hidden="true">2.</strong> Strutture Dati</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../strutture_dati/vector.html"><strong aria-hidden="true">2.1.</strong> Vettori</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.2.</strong> Liste</div></li><li class="chapter-item expanded "><a href="../strutture_dati/queue.html"><strong aria-hidden="true">2.3.</strong> Code</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.4.</strong> Grafi</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.4.1.</strong> Visite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.5.</strong> Code di priorità</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.6.</strong> Grafi pesati</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.7.</strong> Stack</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.8.</strong> Insiemi</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.9.</strong> Dizionari</div></li></ol></li><li class="chapter-item expanded "><a href="../tecniche/index.html"><strong aria-hidden="true">3.</strong> Tecniche</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tecniche/backtracking.html" class="active"><strong aria-hidden="true">3.1.</strong> Backtracking</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Divide et Impera</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.3.</strong> Greedy</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Memoization</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Programmazione dinamica</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Branch and Bound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Ricerca locale</div></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Palestra di Algoritmi</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="backtracking"><a class="header" href="#backtracking">Backtracking</a></h1>
+<blockquote>
+<p>Facciamo finta di dover trovare tutte le sequenze formate da 4 palline che chiameremo <code>a</code>, <code>b</code>, <code>c</code> e <code>d</code>.<br />
+Indichiamo il sacchetto delle palline con <code>{a, b, c, d}</code>
+Modellizziamo il problema dal punto di vista delle <strong>scelte</strong>:</p>
+<ul>
+<li>Inizialmente abbiamo una sequenza nulla, possiamo selezionare una qualsiasi delle palline dal sacchetto. Abbiamo 4 possibilità.</li>
+<li>Facciamo finta di aver selezionato la pallina <code>a</code>, otteniamo una sequenza <code>a</code> e nel sacchetto rimangono <code>{b, c, d}</code>.</li>
+<li>Per la seconda pallina scegliamo <code>b</code>, sequenza <code>ab</code> e sacchetto <code>{c, d}</code>.</li>
+<li>Esaurendo le scelte otteniamo <code>abcd</code> con sacchetto <code>{}</code>. Abbiamo ottenuto la prima sequenza completa.</li>
+<li>Torniamo indietro, rimuoviamo <code>d</code> ottenendo <code>abc</code> e <code>{d}</code>. Non abbiamo altre scelte, torniamo ancora indietro ed otteniamo <code>ab</code> e <code>{c, d}</code>.</li>
+<li>A questo punto possiamo fare un'altra scelta: selezioniamo prima <code>d</code>, ottenendo <code>abd</code> e <code>{c}</code> e poi abbiamo la scelta obbligata che ci porta ad ottenere <code>abdc</code>.</li>
+<li>Possiamo ripetere questo &quot;tornare indietro e provare altre scelte&quot; per ottenere tutte le possibili soluzioni.</li>
+</ul>
+</blockquote>
+<p>Chiamiamo questo algoritmo <em>backtracking</em>.</p>
+<p>Da un punto di vista implementativo il &quot;tornare indietro&quot; si può implementare con <strong>funzioni ricorsive</strong>.</p>
+<p>Viene utilizzato sia per problemi di <strong>esplorazione</strong> (proviamo tutte le possibilità per trovare le varie soluzioni e poi valutarle) sia problemi <strong>enumerativi</strong> (dobbiamo elencare tutte le possibilità).</p>
+<div class="warning">
+La tecnica <i>backtracking</i> è tendenzialmente inefficiente (produce soluzioni super esponenziali), tuttavia può essere un punto di partenza da raffinare.
+</div>
+<p>Un algoritmo generico può essere espresso rappresentato da questa funzione:</p>
+<pre><code class="language-cpp">// Questo è un pseudocodice. Non è scritto in C++.
+
+// Prendiamo i dati del problema, la soluzione (sequenza di scelte parziali) e dati derivati in seguito alle scelte.
+function backtracking(dati_problema, soluzione_parziale, dati_parziali, ...) {
+    // Non ci sono più scelte disponibili oppure abbiamo un altro modo per stabilire se siamo giunti in una soluzione.
+    if (fine(...)) {
+        // Siamo giunti ad una &quot;soluzione&quot;, gestiamola.
+        return processa_soluzione(...);
+    }
+
+    // Generiamo le possibili scelte che possiamo fare in base allo stato attuale.
+    possibili_scelte = genera_scelte(...);
+
+    // Proviamo tutte le scelte.
+    for (scelta : possibili_scelte) {
+        // Facciamo tutte le modifiche comportate dalla scelta
+        effettua_scelta(scelta);
+
+        // Salviamo il valore di ritorno del sottoproblema in seguito a questa scelta, possiamo gestirlo oppure anche non fare nulla, dipende dal problema.
+        auto result = backtracking(dati_problema, soluzione_parziale_aggiornata, dati_parziali_aggiornati, ...);
+
+        // Ripristiniamo le modifiche comportate dalla scelta (se non locali).
+        ripristina_scelta(scelta);
+    }
+}
+</code></pre>
+<h3 id="esempi"><a class="header" href="#esempi">Esempi</a></h3>
+<h4 id="laurea"><a class="header" href="#laurea">LAUREA</a></h4>
+<pre><code class="language-cpp">// Lista contenente i 4 tipi di veicolo.
+// Veicolo: contiene `numero` di veicoli di una certa categoria, `costo` e numero di `posti`.
+std::vector&lt;Veicolo&gt; veicoli = ...;
+
+// La soluzione migliore trovata fino a questo momento.
+int costo_minimo = std::numeric_limits&lt;int&gt;::max();
+
+// Funzione ricorsiva che implementa il backtracking.
+// Ha accesso ai vari `veicoli`, al numero di persone rimaste in attesa e ai soldi spesi fino a questo momento.
+void laurea(int persone_in_attesa, int soldi_spesi) {
+    // Non ci sono più persone in attesa, non dobbiamo spendere nient'altro.
+    // Il numero di persone in attesa può essere negativo:
+    // ci permette di evitare di gestire a parte casi con veicoli più grandi del numero di persone rimanenti,
+    // tanto il risultato è lo stesso in termini economici.
+    if (persone_in_attesa &lt;= 0) {
+        // Il valore associato a questa soluzione è il numero di `soldi_spesi` (è la quantità che vogliamo minimizzare).
+        // Aggiorniamo la soluzione ottima.
+        costo_minimo = std::min(costo_minimo, soldi_spesi);
+        return;
+    }
+
+    // Possiamo scegliere uno qualsiasi dei veicoli disponibili.
+    for (const Veicolo&amp; veicolo : veicoli) {
+        if (veicolo.numero &lt;= 0) continue;
+
+        // &quot;Consumiamo&quot; un veicolo.
+        --veicolo.numero;
+
+        // Cerchiamo la soluzione migliore per le persone e i veicoli rimanenti.
+        laurea(persone_in_attesa - veicolo.posti, soldi_spesi + veicolo.costo);
+
+        // Ripristiniamo l'uso del veicolo.
+        ++veicolo.numero;
+    }
+}
+</code></pre>
+<h3 id="domino"><a class="header" href="#domino">DOMINO</a></h3>
+<pre><code class="language-cpp">// Sacchetto delle tessere.
+std::vector&lt;Tessera&gt; tessere = ...;
+// Rimuovere e riaggiungere elementi ai vector è impegnativo, soprattutto se non fatto alla fine.
+// Semplicmente segnamo le tessere come usate. Inizialmente non è stata usata alcuna tessera.
+std::vector&lt;bool&gt; tessere_usate(N, false);
+
+// Funzione ricorsiva che implementa il backtracking.
+// Abbiamo accesso alle tessere rimanenti. Ci interessa l'estremo a cui attaccare le altre tessere.
+// In questo esempio propaghiamo la soluzione all'indietro: si poteva fare anche in `laurea`.
+// Il domino può iniziare con qualsiasi `estremo`: ce lo giochiamo esternamente provando tutte le possibilità.
+int domino(int estremo) {
+    // Non abbiamo una soluzione finale.
+    // Semplicemente se non riusciamo a fare nessun'altra scelta allora la sequenza successiva attaccabile più lunga sarà lunga 0.
+    
+    // La lunghezza massima della sequenza attaccabile.
+    int massima_lunghezza_attaccabile = 0;
+
+    // Possiamo scegliere fra una qualsiasi delle tessere attaccabili e non ancora utilizzata.
+    for (int i = 0; i &lt; N; ++i) {
+        // Se la tessera è già stata usata o se non è attaccabile allora non la possiamo scegliere.
+        if (tessere_usate.at(i) || non_attaccabile(estremo, tessere.at(i))) continue;
+
+        // Segnamo la tessera come usata.
+        tessere_usate.at(i) = true;
+
+        // Prendiamo la lunghezza massima costruibile usando questa tessera. +1 dovuto a questa tessera.
+        int lunghezza = domino(estremo_opposto(estremo, tessere.at(i))) + 1;
+
+        // Aggiorniamo la massima lunghezza.
+        massima_lunghezza_attaccabile = std::max(massima_lunghezza_attaccabile, lunghezza);
+
+        // Ripristiniamo la tessera.
+        tessere_usate.at(i) = false;
+    }
+
+    // È ancora a 0 se non siamo riusciti ad attaccare alcuna tessera.
+    return massima_lunghezza_attaccabile;
+}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../tecniche/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../tecniche/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

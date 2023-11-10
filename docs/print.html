@@ -1,0 +1,648 @@
+<!DOCTYPE HTML>
+<html lang="in" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Palestra di Algoritmi</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduzione</a></li><li class="chapter-item expanded "><a href="nozioni/index.html"><strong aria-hidden="true">1.</strong> Nozioni</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nozioni/modello_memoria.html"><strong aria-hidden="true">1.1.</strong> Modello della memoria</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="nozioni/memoria/stack.html"><strong aria-hidden="true">1.1.1.</strong> Stack</a></li><li class="chapter-item expanded "><a href="nozioni/memoria/heap.html"><strong aria-hidden="true">1.1.2.</strong> Heap</a></li></ol></li><li class="chapter-item expanded "><a href="nozioni/complexity.html"><strong aria-hidden="true">1.2.</strong> Complessità computazionale</a></li></ol></li><li class="chapter-item expanded "><a href="strutture_dati/index.html"><strong aria-hidden="true">2.</strong> Strutture Dati</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="strutture_dati/vector.html"><strong aria-hidden="true">2.1.</strong> Vettori</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.2.</strong> Liste</div></li><li class="chapter-item expanded "><a href="strutture_dati/queue.html"><strong aria-hidden="true">2.3.</strong> Code</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.4.</strong> Grafi</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.4.1.</strong> Visite</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.5.</strong> Code di priorità</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.6.</strong> Grafi pesati</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.7.</strong> Stack</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.8.</strong> Insiemi</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.9.</strong> Dizionari</div></li></ol></li><li class="chapter-item expanded "><a href="tecniche/index.html"><strong aria-hidden="true">3.</strong> Tecniche</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tecniche/backtracking.html"><strong aria-hidden="true">3.1.</strong> Backtracking</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Divide et Impera</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.3.</strong> Greedy</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> Memoization</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Programmazione dinamica</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.6.</strong> Branch and Bound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.7.</strong> Ricerca locale</div></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Palestra di Algoritmi</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="palestra-di-algoritmi"><a class="header" href="#palestra-di-algoritmi">Palestra di Algoritmi</a></h1>
+<p><em>Palestra di algoritmi</em> è un progetto dell'<em>Università degli Studi di Trento</em> rivolto agli studenti delle scuole superiori di secondo grado.</p>
+<p>L'obiettivo è quello di effettuare allenamenti di informatica nell'ottica del competitive programming.<br />
+Il progetto tratta sbrigativamente anche questioni di teoria essenziali allo svolgimento degli esercizi.</p>
+<p>Il corso è in modalità &quot;tutoring&quot; ed è tenuto da studenti universitari.</p>
+<p>Questa repository contiene il materiale, prodotto nell'anno scolastico 2023/2024, usato durante le lezioni e reso disponibile per un uso anche al di fuori di esse.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="nozioni-teoriche"><a class="header" href="#nozioni-teoriche">Nozioni teoriche</a></h1>
+<p>In questo capitolo vengono definite alcune nozioni che possono essere utili per poter parlare liberamente nelle trattazioni successive.</p>
+<p>Alcune nozioni non sono così essenziali, ma possono essere utili per comprendere il perchè di alcune scelte negli esercizi.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="la-gestione-della-memoria-nei-programmi"><a class="header" href="#la-gestione-della-memoria-nei-programmi">La gestione della memoria nei programmi.</a></h1>
+<p>La memoria (virtuale) di un programma è suddivisa in &quot;segmenti&quot; con significati e scopi differenti.</p>
+<p>Ai fini del corso ne andremo a vedere solo 2: lo <em>stack</em> e lo <em>heap</em>. Ve ne sono altri.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stack-dei-record-di-attivazione"><a class="header" href="#stack-dei-record-di-attivazione">Stack dei record di attivazione.</a></h1>
+<p>La parola &quot;stack&quot; significa &quot;pila&quot; (nel senso di oggetti uno sopra l'altro.)<br />
+In particolare gli oggetti che vengono impilati sono i &quot;<strong>record di attivazione</strong>&quot; delle funzioni:<br />
+Ogni funzione contiene al suo interno delle variabili. Le variabili devono memorizzare dei dati, e per fare ciò necessitano di memoria.<br />
+Ogni chiamata di funzione è dunque associata ad una &quot;<strong>scatoletta</strong>&quot; (<em>record di attivazione</em>) di dimensione adeguata a contenere tutte le variabili della funzione.<br />
+Tale scatoletta viene &quot;impilata&quot; quando viene chiamata la funzione e viene &quot;distrutta&quot; quando la funzione termina.<br />
+L'idea è che alla funzione non interessi nulla di chi l'ha chiamata ecc, e che effettui le operazioni nella sua scatoletta, indipendentemente dalla posizione di questa nello stack.</p>
+<div class="warning">
+<b>Lo stack è limitato</b>. In ambiente GNU/Linux arriva di default a 8 MegaByte. È possibile estenderlo, tuttavia non avrete la possibilità di fare ciò con il CMS (il programma che valuterà i vostri algoritmi).</br>
+Bisogna pertanto stare attenti alle funzioni ricorsive!
+</div>
+<p>Bisogna stare attenti anche a non allocare variabili troppo grandi, come array nello stack:</p>
+<pre><code class="language-cpp">void foo() {
+    int N = ...;
+    int array[N];
+}
+</code></pre>
+<div class="warning">
+Oltre a dipendere da un <code>N</code> "esterno" che può diventare molto grande, questa scrittura è letteralmente <b>VIETATA</b> dallo standard ISO di C++.</br>
+Un <code>array</code> di questo tipo è detto <i>VLA</i> (variable length array) ed è stato introdotto solo in C e non in C++.</br>
+Sebbene sia vietato, è supportato da quasi tutti i compilatori "principali".
+</div>
+<p>Vedremo come alternative il <code>vector</code>.</p>
+<p>L'idea è che i <em>contenitori</em> di elementi (array, liste ecc) debbano essere salvati nella memoria <em>Heap</em>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="memoria-heap"><a class="header" href="#memoria-heap">Memoria Heap</a></h1>
+<p>La parola &quot;heap&quot; significa &quot;mucchio&quot;.<br />
+Potete pensare questa memoria come un foglio bianco, dove potete disegnare e scrivere dove c'è spazio. Scrivete a matita, in modo che quando qualcosa non serve più sia possibile cancellarla per liberare spazio.</p>
+<p>Dal momento che abbiamo una &quot;accozzaglia&quot; di elementi, come facciamo a rintracciare quelli che ci servono? Ci salviamo la loro posizione nello stack, che è molto più ordinato.</p>
+<p>L'idea è che quando un elemento non ci serve più debba essere cancellato per liberare spazio.</p>
+<p>All'interno del corso non utilizzeremo la memoria Heap direttamente, tuttavia impiegheremo delle strutture dati (contenitori di elementi) che la utilizzano.<br />
+Tali strutture dati, tuttavia, lo gestiscono autonomamente.<br />
+L'Heap è stato introdotto solo per giustificare il costo di certe operazioni, per il resto possiamo far finta che non esista.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="complessità-computazionale"><a class="header" href="#complessità-computazionale">Complessità computazionale</a></h1>
+<div class="info">
+Questa è una trattazione informale, dato che l'utilizzo della notazione matematica potrebbe risultare un po' troppo pesante.
+</div>
+<p>Molte piattaforme per la programmazione competitiva pongono dei <strong>limiti di tempo e di spazio</strong> agli algoritmi.<br />
+Rendere la vita complicata ad algoritmi poco efficienti è proprio l'obiettivo di queste competizioni!</p>
+<div class="info">
+Una trattazione approfondita sulla complessità richiede una buonissima conoscenza dell'architettura della macchina, del compilatore ecc...:
+<ul>
+<li> Istruzioni differenti possono impiegare un quantitativo di cicli di clock differenti.</li>
+<li> Macchine differenti possono impiegare cicli di clock differenti per una stessa istruzione.</li>
+<li> Un compilatore potrebbe ottimizzare la lettura e scrittura delle variabili "salvandole sul processore", che ha poco spazio, ma che è in grado di azzerare le tempistiche di lettura e scrittura</li>
+<li> La memoria non è solo la RAM. Fra processore e RAM vi sono le cosiddette caches (L1, L2 e L3) che sono delle memorie poste in maniera gerarchica, più rapide, ma per questioni di costi sono anche più piccole. Dalla RAM non vengono letti solo i byte che ci servono, ma anche un bel po' di quelli "vicini" in modo da salvarli nelle cache. Vi sono alcuni algoritmi che accedono sequenzialmente la memoria che sono più veloci di altri algoritmi che invece accedono alla memoria saltando da parte a parte.</li>
+</ul>
+</div>
+<p>La nostra concezione di complessità computazionale non sarà dunque mirata ad avere una formula esatta per calcolare il tempo impiegato dal calcolatore, ma si limiterà a stimare l'<strong>andamento del tempo di esecuzione al crescere della dimensione</strong> dell'input.</p>
+<p>Chiameremo \(N\) la &quot;dimensione dell'input&quot;, il nome potrebbe variare in base al problema. Alcuni problemi potrebbero avere &quot;più dimensioni&quot;.</p>
+<h2 id="casi-ottimo-pessimo-e-medio"><a class="header" href="#casi-ottimo-pessimo-e-medio">Casi ottimo, pessimo e medio</a></h2>
+<p>Dati due input di <strong>uguale dimensione</strong> NON è detto che uno <strong>stesso algoritmo</strong> impieghi lo stesso tempo.<br />
+Ci sono alcuni input &quot;più buoni di altri&quot;. I cosiddetti <strong>caso ottimo</strong>, <strong>caso medio</strong> e <strong>caso pessimo</strong> possono avere complessità differenti.</p>
+<p>Per esempio, dato un algoritmo per la ricerca di un <code>elemento</code> in un <code>vector</code>:</p>
+<pre><code class="language-cpp">bool contiene(const vector&lt;int&gt;&amp; v, int elemento) {
+    for (int e : v) {
+        if (e == elemento) {
+            // Il return termina l'esecuzione della funzione.
+            return true;
+        }
+    }
+    return false;
+}
+</code></pre>
+<p>\(N\) è la dimensione di <code>v</code> (<code>v.size()</code>).<br />
+È possibile osservare che se l'elemento da cercare è in prima posizione, allora l'algoritmo terminerà subito. Questo è il caso <strong>ottimo</strong>.<br />
+Se l'elemento da cercare è in ultima posizione (o non esiste) allora l'algoritmo deve scorrere tutto il vettore prima di terminare. Questo è il caso <strong>pessimo</strong>.<br />
+Negli altri casi, in media, l'<code>elemento</code> si troverà all'incirca a metà del vettore. Questo NON è il caso <strong>medio</strong>.</p>
+<div class="info">
+Il caso medio deve comprendere anche il caso ottimo e il caso pessimo. Tuttavia la media è relativa alla frequenza con cui possono avvenire certi eventi.
+In particolare bisognerebbe conoscere la probabilità con cui un elemento non si trova all'interno del vettore per conoscere l'impatto del caso pessimo.
+Non possiamo nemmeno dare per scontato che tutti gli elementi abbiano la stessa probabilità di dover essere cercati.
+</div>
+<p>Il caso medio è spesso intrattabile.<br />
+Per quanto riguarda il caso ottimo: non possiamo aspettarci che il CMS (il programma che valuterà le soluzioni) sia così gentile da darci solo casi ottimi.<br />
+Quindi il nostro obiettivo sarà quello di ottimizzare il <strong>caso pessimo</strong>.</p>
+<div class="warning">
+Un algoritmo con caso pessimo peggiore di un altro può in realtà essere migliore nella maggioranza dei casi!
+</div>
+<h2 id="come-stabilire-la-classe-di-complessità"><a class="header" href="#come-stabilire-la-classe-di-complessità">Come stabilire la classe di complessità</a></h2>
+<p>L'algoritmo per la ricerca dell'elemento qui sopra, nel caso pessimo esegue le istruzioni nel ciclo \(N\) volte.<br />
+Facciamo che le istruzioni all'interno del ciclo impieghino un tempo \(a\). Allora il tempo impiegato dal ciclo è di \(N·a\).<br />
+Facciamo che le istruzioni all'esterno del ciclo impieghino un tempo \(b\). Allora il tempo complessivo impiegato dalla funzione è \(b + N·a\).</p>
+<p>Il nostro scopo è vedere come si comporta la funzione per input MOOOLTO grandi: se \(N\) &quot;diventa infinito&quot; allora è intuitivo pensare che aggiungere una costante \(b\) sia ininfluente.<br />
+Quindi possiamo approssimare il tempo complessivo impiegato dalla funzione come \(N·a\).</p>
+<p>Dal momento che, come detto precedentemente, non è così semplice calcolare il valore di \(a\), possiamo tralasciare questa informazione. Otteniamo dunque \(N\).<br />
+Indichiamo il fatto che si stia parlando di una approssimazione con la notazione \(\Theta(N)\) (Potreste trovarlo scritto come \(O(N)\) per comodità. Le due notazioni NON sono equivalenti, ma per i nostri scopi possono essere interscambiate).</p>
+<p>\(\Theta(N)\) non ci dice quanto ci metterà il nostro algoritmo, ma ci dà una buona indicazione di come cresce il tempo al crescere di \(N\).<br />
+Con ragionamenti analoghi si può osservare che il <strong>caso ottimo</strong> è \(\Theta(1)\). Il <strong>caso medio</strong>, sotto determinate ipotesi, è \(\Theta(N)\).</p>
+<p>Possiamo creare una <strong>gerarchia</strong> fra le varie <em>classi di complessità</em> (&quot;migliori&quot; a sinistra).<br />
+Dal momento che una delle approssimazioni prevede &quot;\(N\) molto grande&quot;, è chiaro che tale gerarchia non ci dia nessuna informazione su quale sia l'algoritmo migliore per \(N\) piccolo:<br />
+\[ \Theta(1) \ll \Theta(logN) \ll \Theta(N) \ll \Theta(N·logN) \ll \Theta(N^a) \ll \Theta(b^N) \ll \Theta(N!) \ll \Theta(N^N) \]</p>
+<p>\(\log(N)\) è detto &quot;logaritmo di N&quot;, è una funzione che molti di voi probabilmente non conoscono. Tuttavia è sufficiente sapere che è una funzione che cresce molto lentamente.<br />
+\(N!\) è detto &quot;N fattoriale&quot; e significa \(N·(N-1)·(N-2)· ... · 1\). È una funzione che cresce molto velocemente. Tuttavia non quanto \(N^N\).</p>
+<p>Nomi alternativi per le classi di complessità:</p>
+<ul>
+<li><em>costante</em>: \(\Theta(1)\)</li>
+<li><em>logaritmica</em>: \(\Theta(\log(N))\)</li>
+<li><em>lineare</em>: \(\Theta(N)\)</li>
+<li><em>quasi-lineare</em>: \(\Theta(N\cdot\log(N))\)</li>
+<li><em>polinomiale</em>: \(\Theta(N^\alpha)\)</li>
+<li><em>esponenziale</em>: \(\Theta(a^N)\)</li>
+<li><em>fattoriale</em>: \(\Theta(N!)\)</li>
+</ul>
+<p>Vi sono anche altre classi. A noi interessano principalmente fino alla <em>polinomiale</em>. Non dovete impararle a memoria. Continueremo ad usare questi termini: prima o poi ve li ricorderete.</p>
+<p>Vi invito ad usare calcolatrici grafiche (<a href="https://www.geogebra.org/calculator">geogebra</a>, <a href="https://www.desmos.com/calculator">desmos</a> ecc) per visualizzare l'andamento delle varie funzioni.<br />
+Potete anche inserire dei coefficienti per osservare che a lungo andare non cambiano la situazione.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="strutture-dati"><a class="header" href="#strutture-dati">Strutture Dati</a></h1>
+<p>Le <em>strutture dati</em> sono collezioni di <strong>dati</strong> caratterizzate dal <strong>modo in cui organizzano</strong> la collezione e dal come è possibile <strong>operare</strong> sulla stessa.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vettori"><a class="header" href="#vettori">Vettori</a></h1>
+<p>I vettori in C++ sono dei contenitori (<em>container</em>) che si comportano in modo simile agli array, ma che hanno dimensione dinamica e possono essere ridimensionati. Per creare un vettore contenente elementi di tipo <code>TIPO</code> si scrive <code>vector&lt;TIPO&gt;</code>.</p>
+<p>Memorizzano una serie di elementi uno dietro l'altro in memoria. È possibile accedere gli elementi in base all'<em>indice</em>: il numero dell'elemento (primo, secondo ecc).</p>
+<p>I vector sono indicizzati da 0. Ossia il primo elemento corrisponde all'indice <code>0</code>, l'N-esimo elemento all'indice <code>N-1</code>.</p>
+<h2 id="inizializzazione"><a class="header" href="#inizializzazione">Inizializzazione</a></h2>
+<p>L'inizializzazione di una variabile di tipo <code>vector</code> si può fare nei seguenti modi (attenzione alle parentesi usate!):</p>
+<ul>
+<li><code>vector&lt;TIPO&gt; nomeVariabile;</code> crea un vettore vuoto di elementi di tipo <code>TIPO</code> (ad es. <code>vector&lt;float&gt; valori</code>)</li>
+<li><code>vector&lt;TIPO&gt; nomeVariabile(DIMENSIONE, VALORE);</code> crea un vettore con al suo interno il numero <code>DIMENSIONE</code> di elementi di tipo <code>TIPO</code> inizializzati al valore <code>VALORE</code> (ad es. <code>vector&lt;int&gt; classifica(158, 1)</code>)</li>
+<li><code>vector&lt;TIPO&gt; nomeVariabile{ELEMENTO_1, ELEMENTO_2, ...};</code> crea un vettore di tipo <code>TIPO</code> contenente gli elementi <code>ELEMENTO_1</code>, <code>ELEMENTO_2</code>, ... (ad es. <code>vector&lt;string&gt; nomi{&quot;Pippo&quot;, &quot;Pluto&quot;, &quot;Topolino&quot;}</code>)</li>
+</ul>
+<h2 id="accesso"><a class="header" href="#accesso">Accesso</a></h2>
+<p>Per accedere agli elementi di un <code>vector</code> ci sono i seguenti modi:</p>
+<ul>
+<li><code>v.at(posizione)</code> si usa per accedere all'elemento in posizione <code>posizione+1</code>, poichè gli indici partono da <code>0</code> (funziona come per gli array normali, ad es. <code>v.at(0)</code> restituisce il primo elemento)</li>
+<li><code>v.front()</code> si usa per accedere al primo elemento</li>
+<li><code>v.back()</code> si usa per accedere all'ultimo elemento</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt; pesi{4, 7, 9, 8};
+// scrive in output 4798 48
+cout &lt;&lt; pesi.at(0) &lt;&lt; pesi.at(1) &lt;&lt; pesi.at(2) &lt;&lt; pesi.at(3)
+	&lt;&lt; &quot; &quot; &lt;&lt; pesi.front() &lt;&lt; pesi.back() &lt;&lt; endl;
+</code></pre>
+<h2 id="aggiunta-di-elementi-e-ridimensionamento"><a class="header" href="#aggiunta-di-elementi-e-ridimensionamento">Aggiunta di elementi e ridimensionamento</a></h2>
+<ul>
+<li><code>v.push_back(ELEMENTO)</code> aggiunge <code>ELEMENTO</code> in fondo al vettore (ad es. <code>v.push_back(42.0)</code>)</li>
+<li><code>v.resize(NUOVA_DIMENSIONE, VALORE)</code> ridimensiona il vettore così che abbia <code>NUOVA_DIMENSIONE</code> elementi. Se <code>NUOVA_DIMENSIONE</code> è maggiore della dimensione che aveva precedentemente, i nuovi elementi vengono inizializzati col valore <code>VALORE</code>. (ad es. <code>v.resize(1000, 0)</code>)</li>
+<li><code>v.reserve(NUOVA_DIMENSIONE)</code> il vettore contiene ancora lo stesso numero di elementi precedenti, tuttavia ha allocato dello &quot;spazio extra&quot; per eventuali ridimensionamenti (vedasi dopo).</li>
+<li><code>v.pop_back()</code> rimuove l'ultimo elemento del vettore</li>
+<li><code>v.size()</code> restituisce il numero di elementi contenuti nel vettore</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;string&gt; citta{&quot;Trento&quot;, &quot;Bolzano&quot;, &quot;Milano&quot;, &quot;Sorne&quot;};
+// scrive 4 Trento Sorne
+cout &lt;&lt; citta.size() &lt;&lt; &quot; &quot; &lt;&lt; citta.front() &lt;&lt; &quot; &quot; &lt;&lt; citta.back() &lt;&lt; endl;
+
+citta.push_back(&quot;Roma&quot;); // aggiungi &quot;Roma&quot; in fondo
+// scrive 5 Trento Roma
+cout &lt;&lt; citta.size() &lt;&lt; &quot; &quot; &lt;&lt; citta.front() &lt;&lt; &quot; &quot; &lt;&lt; citta.back() &lt;&lt; endl;
+
+citta.resize(2); // mantieni solo i primi 2 elementi
+// scrive 2 Trento Bolzano
+cout &lt;&lt; citta.size() &lt;&lt; &quot; &quot; &lt;&lt; citta.front() &lt;&lt; &quot; &quot; &lt;&lt; citta.back() &lt;&lt; endl;
+
+citta.pop_back(); // rimuovi l'ultimo elemento, cioe' &quot;Bolzano&quot;
+// scrive 1 Trento Trento
+cout &lt;&lt; citta.size() &lt;&lt; &quot; &quot; &lt;&lt; citta.front() &lt;&lt; &quot; &quot; &lt;&lt; citta.back() &lt;&lt; endl;
+</code></pre>
+<h3 id="osservazioni"><a class="header" href="#osservazioni">Osservazioni</a></h3>
+<div class="info">
+La variabile di tipo <code>vector</code> salva nello stack solo le informazioni utili a conoscere la dimensione effettiva del vettore e la posizione nello heap del vettore stesso.</br>
+<code>vector</code> memorizza gli elementi uno dietro l'altro in un'area contigua di memoria heap.
+</div>
+<p>Nella memoria heap abbiamo però detto che si può scrivere qualsiasi cosa, negli spazi vuoti.<br />
+Ipotizziamo dunque di voler fare un <code>push_back</code> quando è già stato scritto qualcos'altro poco dopo la fine del nostro vettore: per potersi ingrandire, il <code>vector</code> è obbligato a dover cercare uno spazio vuoto più grande.<br />
+Deve dunque <strong>copiare</strong> tutti gli elementi già presenti nella nuova area di memoria: ciò è MOLTO costoso, tuttavia il <code>vector</code> è stato pensato in modo da minimizzare il numero di ridimensionamenti, richiedendo un po' più di memoria.</p>
+<p>Tuttavia è buona pratica, quando si conosce il numero di elementi, dire al vettore quanto spazio occupare. Abbiamo 3 modi per farlo:</p>
+<ul>
+<li>con il <code>reserve</code>: fintantochè il numero di elementi non supera la dimensione effettiva del vettore, chiamate a <code>push_back</code> non provocheranno nessuna copia (riallocamento).</li>
+<li>Con il <code>resize</code>: il vettore acquisisce effettivamente una dimensione di <code>DIMENSIONE</code>, eventuali <code>push_back</code> cercheranno di incrementare <strong>ulteriormente</strong> la dimensione. In questo caso dovete limitarvi ad <strong>assegnare</strong> gli elementi già presenti!</li>
+<li>In fase di dichiarazione, specificando <code>DIMENSIONE</code>. Valgono le stesse osservazioni di <code>resize</code>.</li>
+</ul>
+<p>Vedremo più avanti altri modi di implementare una <code>list</code>a di elementi in modo da ovviare alla problematica dell'allocazione (vengono introdotti altri problemi).</p>
+<div class="info">
+ndr: <code>list</code> in Python è un <i>array dinamico</i>: è implementato come un <code>vector</code>.
+</div>
+<h2 id="scorrere-un-vettore"><a class="header" href="#scorrere-un-vettore">Scorrere un vettore</a></h2>
+<p>Per scorrere tutti gli elementi di un <code>vector</code> si può usare un normale <code>for</code> come si farebbe per gli array normali. La variabile <code>i</code> del ciclo va da <code>0</code> a <code>numeri.size()</code> (non compreso) e quindi tocca, in ordine, tutti gli elementi di <code>numeri</code>.</p>
+<pre><code class="language-cpp">vector&lt;float&gt; numeri{3.14, 2.78, 1+2.1, 3*1.12};
+for(int i = 0; i &lt; numeri.size(); ++i) {
+	cout &lt;&lt; &quot;In posizione &quot; &lt;&lt; i &lt;&lt; &quot; c'e' il numero &quot; &lt;&lt; numeri.at(i) &lt;&lt; endl;
+}
+</code></pre>
+<p>Vi è un altro modo di iterare gli elementi dei vari contenitori: </p>
+<pre><code class="language-cpp">vector&lt;float&gt; numeri{3.14, 2.78, 1+2.1, 3*1.12};
+
+// si legge come: &quot;per ogni `numero` in `numeri`&quot;
+for (float numero : numeri) {
+    // facciamo qualcosa con `numero`.
+}
+</code></pre>
+<p>Tale modalità di iterazione potrà essere più efficiente per certi tipi di collezioni che vedremo più avanti.<br />
+Tuttavia non permette di sapere a che elemento siamo arrivati (salvo contare manualmente in una variabile esterna).<br />
+In questo caso è possibile fare la copia di <code>numero</code> senza troppi problemi, dato che è un <code>float</code>.<br />
+Nel caso <code>numero</code> fosse stato di un tipo molto più &quot;grosso&quot; è sicuramente meglio predere un <strong>riferimento</strong> (<code>TIPO&amp; numero</code>).</p>
+<h2 id="passare-un-vettore-ad-una-funzione"><a class="header" href="#passare-un-vettore-ad-una-funzione">Passare un vettore ad una funzione</a></h2>
+<p>Ovviamente i <code>vector</code> sono dei tipi come altri, quindi possono essere passati come parametro di una funzione senza problemi.<br />
+Però, quando un parametro viene passato ad una funzione, esso viene copiato per fare in modo che la funzione non possa modificare la copia originale di quella variabile ma riceva una copia tutta per sè.<br />
+Poichè i <code>vector</code> possono essere costosi da copiare, conviene prevenirlo mettendo una <code>&amp;</code> dopo il tipo del parametro della funzione, per dire al compilatore di passare tale parametro <em>per reference</em>, ovvero non copiarlo.<br />
+Però passare parametri alle funzioni senza copiarli può permettere alle funzioni di modificare le variabili che passiamo loro; se vogliamo evitare ciò (ad esempio perchè una funzione che scrive a schermo non deve modificare il contenuto del vettore che gli passiamo) possiamo mettere un <code>const</code> prima del tipo del parametro.</p>
+<pre><code class="language-cpp">// quando questa funzione viene chiamata, il vettore passato
+// al posto di `v` viene copiato (operazione costosa)
+void printVettore(vector&lt;int&gt; v) {
+	for (int i = 0; i &lt; v.size(); ++i) {
+		cout &lt;&lt; v &lt;&lt; &quot; &quot;;
+	}
+	cout &lt;&lt; endl;
+}
+
+// quando questa funzione viene chiamata, il vettore passato al posto
+// di `v` non viene copiato ma la funzione ne ha accesso diretto
+void printVettoreOttimizzato(const vector&lt;int&gt;&amp; v) {
+	v.push_back(5); // errore! `v` e' dichiarato const, quindi non puo' essere modificato 
+	for (int i = 0; i &lt; v.size(); ++i) {
+		cout &lt;&lt; v &lt;&lt; &quot; &quot;; // tuttavia possiamo leggerlo liberamente.
+	}
+	cout &lt;&lt; endl;
+}
+
+// questa funzione aggiunge un elemento sia ad `a` che a `b`, ma solo
+// la modifica a b viene recepita dal chiamante, perche' a e'
+// stato copiato prima di venir modificato, b invece no.
+void modificaSecondoVettore(vector&lt;int&gt; a, vector&lt;int&gt;&amp; b) {
+	a.push_back(-1);
+	b.push_back(-1);
+	cout &lt;&lt; &quot;Vettore a in modificaSecondoVettore: &quot;;    
+	printVettoreOttimizzato(a);
+	cout &lt;&lt; &quot;Vettore b in modificaSecondoVettore: &quot;;
+	printVettoreOttimizzato(b);
+}
+
+int main() {
+	vector&lt;int&gt; a{0,1,2,3};
+	vector&lt;int&gt; b{9,8,7};
+
+	cout &lt;&lt; &quot;Vettore a all'inizio: &quot;;
+	printVettore(a); // a viene copiato, costoso!
+	cout &lt;&lt; &quot;Vettore b all'inizio: &quot;;
+	printVettoreOttimizzato(b); // b non viene copiato
+
+	modificaSecondoVettore(a, b);
+
+	cout &lt;&lt; &quot;Vettore a nel main: &quot;;
+	printVettoreOttimizzato(a); // uguale all' a originale
+	cout &lt;&lt; &quot;Vettore b nel main: &quot;;
+	printVettoreOttimizzato(b); // modificato
+}
+</code></pre>
+<h2 id="esercizi"><a class="header" href="#esercizi">Esercizi</a></h2>
+<ul>
+<li>Scrivi un programma che chiede all'utente dei numeri finchè non viene inserito -1 e poi li scrive nell'ordine opposto in cui sono stati inseriti (attenzione agli indici!).</li>
+<li>Scrivi un programma che chiede all'utente dei numeri finchè non viene inserito -1, e ad ogni numero <code>i</code> che viene fornito dall'utente, scriva in output l<code>i-1</code>-esimo numero che l'utente ha inserito (oppure -1 se tale numero non esiste). Ad esempio, se inserisco, in ordine, <code>5 0 1 4 3</code>, il programma dovrebbe scrivermi, in ordine, <code>-1 5 0 -1 4</code>.</li>
+<li>Scrivi una funzione che, preso come parametro un vettore di numeri (attenzione a fare in modo che questo vettore non venga copiato), ne calcola il minimo e il massimo e li ritorna in un <code>pair&lt;&gt;</code>. La <em>signature</em> della funzione sarebbe quindi qualcosa come <code>pair&lt;int, int&gt; f(vector&lt;int&gt;&amp; v)</code>.</li>
+<li>(difficile) Scrivi una funzione che calcola la lunghezza di una linea spezzata a partire dal vettore di punti che la compongono. Si possono fare infatti anche dei <code>vector</code> di <code>pair</code> in questo modo: <code>vector&lt;pair&lt;float, float&gt;&gt;</code>.</li>
+</ul>
+<h2 id="problemi"><a class="header" href="#problemi">Problemi</a></h2>
+<p>Questi problemi si possono probabilmente risolvere anche senza usare <code>vector</code>, ma cercate di usarlo per allenamento!</p>
+<ul>
+<li>Kattis: <a href="https://open.kattis.com/problems/peasoup">peasoup</a>, <a href="https://open.kattis.com/contests/wg4y5t/problems/missingnumbers">missingnumbers</a>, <a href="https://open.kattis.com/problems/eventplanning">eventplanning</a>, <a href="https://open.kattis.com/problems/basicprogramming1">basicprogramming1</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="code"><a class="header" href="#code">Code</a></h1>
+<p>Le code sono dei <em>container</em> che funzionano come le code ai negozi: quando arrivano delle nuove persone si mettono in fondo alla coda, e nel momento in cui il negozio ammette nuove persone quelle che entrano sono quelle in cima alla coda.<br />
+Le operazioni supportate sono quindi quelle per aggiungere in fondo e per togliere dalla cima.<br />
+In C++ si può creare una coda di tipo <code>TIPO</code> usando <code>queue&lt;TIPO&gt;</code>, ad esempio <code>queue&lt;string&gt;</code>.  Le <code>queue</code> supportano le seguenti operazioni:</p>
+<ul>
+<li><code>q.push(ELEMENTO)</code> per aggiungere <code>ELEMENTO</code> (di tipo <code>TIPO</code>) in fondo alla coda</li>
+<li><code>q.front()</code> per leggere l'elemento in cima alla coda</li>
+<li><code>q.pop()</code> per rimuovere l'elemento in cima alla coda</li>
+<li><code>q.size()</code> restituisce il numero di elementi in coda</li>
+</ul>
+<pre><code class="language-cpp">queue&lt;int&gt; q;
+q.push(5);
+q.push(6);
+q.push(7);
+
+// scrive 3 5
+cout &lt;&lt; q.size() &lt;&lt; &quot; &quot; &lt;&lt; q.front() &lt;&lt; endl;
+
+q.pop();
+// scrive 2 6
+cout &lt;&lt; q.size() &lt;&lt; &quot; &quot; &lt;&lt; q.front() &lt;&lt; endl;
+</code></pre>
+<h2 id="problemi-1"><a class="header" href="#problemi-1">Problemi</a></h2>
+<ul>
+<li>Kattis: <a href="https://open.kattis.com/problems/ferryloading3">ferryloading3</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tecniche-risolutive"><a class="header" href="#tecniche-risolutive">Tecniche Risolutive</a></h1>
+<p>Vengono proposte delle tecniche &quot;standard&quot; per progettare / migliorare algoritmi.</p>
+<p>Queste tecniche non sono sufficienti per poter risolvere i problemi. Spesso sono richieste buone capacità di problem solving.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="backtracking"><a class="header" href="#backtracking">Backtracking</a></h1>
+<blockquote>
+<p>Facciamo finta di dover trovare tutte le sequenze formate da 4 palline che chiameremo <code>a</code>, <code>b</code>, <code>c</code> e <code>d</code>.<br />
+Indichiamo il sacchetto delle palline con <code>{a, b, c, d}</code>
+Modellizziamo il problema dal punto di vista delle <strong>scelte</strong>:</p>
+<ul>
+<li>Inizialmente abbiamo una sequenza nulla, possiamo selezionare una qualsiasi delle palline dal sacchetto. Abbiamo 4 possibilità.</li>
+<li>Facciamo finta di aver selezionato la pallina <code>a</code>, otteniamo una sequenza <code>a</code> e nel sacchetto rimangono <code>{b, c, d}</code>.</li>
+<li>Per la seconda pallina scegliamo <code>b</code>, sequenza <code>ab</code> e sacchetto <code>{c, d}</code>.</li>
+<li>Esaurendo le scelte otteniamo <code>abcd</code> con sacchetto <code>{}</code>. Abbiamo ottenuto la prima sequenza completa.</li>
+<li>Torniamo indietro, rimuoviamo <code>d</code> ottenendo <code>abc</code> e <code>{d}</code>. Non abbiamo altre scelte, torniamo ancora indietro ed otteniamo <code>ab</code> e <code>{c, d}</code>.</li>
+<li>A questo punto possiamo fare un'altra scelta: selezioniamo prima <code>d</code>, ottenendo <code>abd</code> e <code>{c}</code> e poi abbiamo la scelta obbligata che ci porta ad ottenere <code>abdc</code>.</li>
+<li>Possiamo ripetere questo &quot;tornare indietro e provare altre scelte&quot; per ottenere tutte le possibili soluzioni.</li>
+</ul>
+</blockquote>
+<p>Chiamiamo questo algoritmo <em>backtracking</em>.</p>
+<p>Da un punto di vista implementativo il &quot;tornare indietro&quot; si può implementare con <strong>funzioni ricorsive</strong>.</p>
+<p>Viene utilizzato sia per problemi di <strong>esplorazione</strong> (proviamo tutte le possibilità per trovare le varie soluzioni e poi valutarle) sia problemi <strong>enumerativi</strong> (dobbiamo elencare tutte le possibilità).</p>
+<div class="warning">
+La tecnica <i>backtracking</i> è tendenzialmente inefficiente (produce soluzioni super esponenziali), tuttavia può essere un punto di partenza da raffinare.
+</div>
+<p>Un algoritmo generico può essere espresso rappresentato da questa funzione:</p>
+<pre><code class="language-cpp">// Questo è un pseudocodice. Non è scritto in C++.
+
+// Prendiamo i dati del problema, la soluzione (sequenza di scelte parziali) e dati derivati in seguito alle scelte.
+function backtracking(dati_problema, soluzione_parziale, dati_parziali, ...) {
+    // Non ci sono più scelte disponibili oppure abbiamo un altro modo per stabilire se siamo giunti in una soluzione.
+    if (fine(...)) {
+        // Siamo giunti ad una &quot;soluzione&quot;, gestiamola.
+        return processa_soluzione(...);
+    }
+
+    // Generiamo le possibili scelte che possiamo fare in base allo stato attuale.
+    possibili_scelte = genera_scelte(...);
+
+    // Proviamo tutte le scelte.
+    for (scelta : possibili_scelte) {
+        // Facciamo tutte le modifiche comportate dalla scelta
+        effettua_scelta(scelta);
+
+        // Salviamo il valore di ritorno del sottoproblema in seguito a questa scelta, possiamo gestirlo oppure anche non fare nulla, dipende dal problema.
+        auto result = backtracking(dati_problema, soluzione_parziale_aggiornata, dati_parziali_aggiornati, ...);
+
+        // Ripristiniamo le modifiche comportate dalla scelta (se non locali).
+        ripristina_scelta(scelta);
+    }
+}
+</code></pre>
+<h3 id="esempi"><a class="header" href="#esempi">Esempi</a></h3>
+<h4 id="laurea"><a class="header" href="#laurea">LAUREA</a></h4>
+<pre><code class="language-cpp">// Lista contenente i 4 tipi di veicolo.
+// Veicolo: contiene `numero` di veicoli di una certa categoria, `costo` e numero di `posti`.
+std::vector&lt;Veicolo&gt; veicoli = ...;
+
+// La soluzione migliore trovata fino a questo momento.
+int costo_minimo = std::numeric_limits&lt;int&gt;::max();
+
+// Funzione ricorsiva che implementa il backtracking.
+// Ha accesso ai vari `veicoli`, al numero di persone rimaste in attesa e ai soldi spesi fino a questo momento.
+void laurea(int persone_in_attesa, int soldi_spesi) {
+    // Non ci sono più persone in attesa, non dobbiamo spendere nient'altro.
+    // Il numero di persone in attesa può essere negativo:
+    // ci permette di evitare di gestire a parte casi con veicoli più grandi del numero di persone rimanenti,
+    // tanto il risultato è lo stesso in termini economici.
+    if (persone_in_attesa &lt;= 0) {
+        // Il valore associato a questa soluzione è il numero di `soldi_spesi` (è la quantità che vogliamo minimizzare).
+        // Aggiorniamo la soluzione ottima.
+        costo_minimo = std::min(costo_minimo, soldi_spesi);
+        return;
+    }
+
+    // Possiamo scegliere uno qualsiasi dei veicoli disponibili.
+    for (const Veicolo&amp; veicolo : veicoli) {
+        if (veicolo.numero &lt;= 0) continue;
+
+        // &quot;Consumiamo&quot; un veicolo.
+        --veicolo.numero;
+
+        // Cerchiamo la soluzione migliore per le persone e i veicoli rimanenti.
+        laurea(persone_in_attesa - veicolo.posti, soldi_spesi + veicolo.costo);
+
+        // Ripristiniamo l'uso del veicolo.
+        ++veicolo.numero;
+    }
+}
+</code></pre>
+<h3 id="domino"><a class="header" href="#domino">DOMINO</a></h3>
+<pre><code class="language-cpp">// Sacchetto delle tessere.
+std::vector&lt;Tessera&gt; tessere = ...;
+// Rimuovere e riaggiungere elementi ai vector è impegnativo, soprattutto se non fatto alla fine.
+// Semplicmente segnamo le tessere come usate. Inizialmente non è stata usata alcuna tessera.
+std::vector&lt;bool&gt; tessere_usate(N, false);
+
+// Funzione ricorsiva che implementa il backtracking.
+// Abbiamo accesso alle tessere rimanenti. Ci interessa l'estremo a cui attaccare le altre tessere.
+// In questo esempio propaghiamo la soluzione all'indietro: si poteva fare anche in `laurea`.
+// Il domino può iniziare con qualsiasi `estremo`: ce lo giochiamo esternamente provando tutte le possibilità.
+int domino(int estremo) {
+    // Non abbiamo una soluzione finale.
+    // Semplicemente se non riusciamo a fare nessun'altra scelta allora la sequenza successiva attaccabile più lunga sarà lunga 0.
+    
+    // La lunghezza massima della sequenza attaccabile.
+    int massima_lunghezza_attaccabile = 0;
+
+    // Possiamo scegliere fra una qualsiasi delle tessere attaccabili e non ancora utilizzata.
+    for (int i = 0; i &lt; N; ++i) {
+        // Se la tessera è già stata usata o se non è attaccabile allora non la possiamo scegliere.
+        if (tessere_usate.at(i) || non_attaccabile(estremo, tessere.at(i))) continue;
+
+        // Segnamo la tessera come usata.
+        tessere_usate.at(i) = true;
+
+        // Prendiamo la lunghezza massima costruibile usando questa tessera. +1 dovuto a questa tessera.
+        int lunghezza = domino(estremo_opposto(estremo, tessere.at(i))) + 1;
+
+        // Aggiorniamo la massima lunghezza.
+        massima_lunghezza_attaccabile = std::max(massima_lunghezza_attaccabile, lunghezza);
+
+        // Ripristiniamo la tessera.
+        tessere_usate.at(i) = false;
+    }
+
+    // È ancora a 0 se non siamo riusciti ad attaccare alcuna tessera.
+    return massima_lunghezza_attaccabile;
+}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
