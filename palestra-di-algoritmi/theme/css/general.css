@@ -158,7 +158,7 @@ blockquote {
 
 .warning {
     margin: 20px;
-    padding: 0 40px;
+    padding: 0 20px;
     border-inline-start: 2px solid var(--warning-border);
     font-size: 1.2rem;
 }
@@ -168,13 +168,34 @@ blockquote {
     width: 3rem;
     height: 3rem;
     margin-inline-start: calc(-1.5rem - 21px);
-    content: "ⓘ";
+    content: "⚠";
     text-align: center;
     background-color: var(--bg);
     color: var(--warning-border);
     font-weight: bold;
     font-size: 2rem;
 }
+
+.info {
+    margin: 20px;
+    padding: 0 20px;
+    border-inline-start: 2px solid var(--quote-border);
+    font-size: 1.2rem;
+}
+
+.info:before {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    margin-inline-start: calc(-1.5rem - 21px);
+    content: "ⓘ";
+    text-align: center;
+    background-color: var(--bg);
+    color: var(--quote-border);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
 
 blockquote .warning:before {
     background-color: var(--quote-bg);

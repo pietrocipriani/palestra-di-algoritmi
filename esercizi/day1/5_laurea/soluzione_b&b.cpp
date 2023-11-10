@@ -35,6 +35,7 @@ bool operator<(const Veicolo& v1, const Veicolo& v2) {
 array<Veicolo, 4> veicoli;
 
 
+
 // Il risultato che vogliamo migliorare pian piano.
 // Inizializziamo a `numeric_limits<int>::max()`, ossia il valore massimo rappresentabile dal tipo `int`.
 // In realtà, dalle ipotesi del problema sappiamo già che non possono essere superati i 100·100 euro (si può raffinare ancora di più la stima).
@@ -44,7 +45,7 @@ int costo_minimo = numeric_limits<int>::max();
 // `indice_veicolo` è l'indice del primo veicolo che possiamo prendere.
 // `persone_rimanenti` è il numero di persone che sono ancora in attesa.
 // `costo_attuale` sono i soldi già spesi.
-void combinazioni(int indice_veicolo, int persone_rimanenti, int costo_attuale) {
+void combinazioni(int indice_veicolo, int persone_rimanenti, int costo_attuale, int posti_rimanenti) {
 
   // Se non ci sono più persone in attesa allora abbiamo concluso.
   if (persone_rimanenti <= 0) {
@@ -54,8 +55,8 @@ void combinazioni(int indice_veicolo, int persone_rimanenti, int costo_attuale) 
     return;
   }
 
-  // Se sono finiti i veicoli (ma non le persone) allora non siamo giunti ad una soluzione. Torniamo indietro.
-  if (indice_veicolo >= veicoli.size()) {
+  // Se sono finiti i veicoli (ma non le persone) allora non siamo giunti ad una soluzione non valida. Torniamo indietro.
+  if (indice_veicolo >= veicoli.size() || posti_rimanenti < persone_rimanenti) {
     return;
   }
 
@@ -98,9 +99,18 @@ void combinazioni(int indice_veicolo, int persone_rimanenti, int costo_attuale) 
   for (int numero = numero_massimo; numero >= 0; --numero) {
     // Proviamo a soddisfare le altre persone con i prossimi veicoli.
     // Non ha senso riprovare ad utilizzare questo veicolo (o precedenti) dato che è equivalente a prenderne di più in questo momento. Ma abbiamo già provato a prenderne di più.
+    int indice_veicolo_next = indice_veicolo + 1;
+    
     // Abbiamo soddisfatto al massimo `veicolo.posti * numero` persone. Anche se andiamo in negativo non è un problema.
+    int persone_rimanenti_next = persone_rimanenti - veicolo.posti * numero;
+
     // Abbiamo speso ulteriori `veicolo.costo * numero` euro.
-    combinazioni(indice_veicolo + 1, persone_rimanenti - veicolo.posti * numero, costo_attuale + veicolo.costo * numero);
+    int costo_attuale_next = costo_attuale + veicolo.costo * numero;
+    
+    // Abbiamo scartato `veicolo.numero - numero` veicoli per un totale di `(veicolo.numero - numero) · veicolo.posti` posti.
+    int posti_rimanenti_next = posti_rimanenti - (veicolo.numero - numero) * veicolo.posti;
+
+    combinazioni(indice_veicolo_next, persone_rimanenti_next, costo_attuale_next, posti_rimanenti_next);
   }
 
 }
@@ -119,9 +129,14 @@ int main() {
   veicoli[2].posti = 5;
   veicoli[3].posti = 7;
 
+  // Il numero di posti rimanenti. Se escludiamo troppi veicoli abbiamo la possibilità di fermarci immediatamente, senza andare avanti e perdere tempo.
+  int posti_rimanenti = 0;
+
   // Il veicolo deve essere letto per riferimento! Lo dobbiamo modificare (e in ogni caso è meglio non fare copie inutili).
   for (Veicolo& veicolo : veicoli) {
     in >> veicolo.numero >> veicolo.costo;
+    // Incrementiamo il numero di posti rimanenti. Inizialmente deve essere pari al numero di posti totali.
+    posti_rimanenti += veicolo.posti * veicolo.numero;
   }
 
   // OPZIONALE: È probabile che un veicolo con buon rapporto qualità prezzo venga preso in una soluzione ottima.
@@ -146,7 +161,7 @@ int main() {
 
   // Proviamo le varie combinazioni.
   // Partiamo dal veicolo 0. Dobbiamo trasportare `N` persone. Abbiamo già speso 0 euro.
-  combinazioni(0, N, 0);
+  combinazioni(0, N, 0, posti_rimanenti);
 
   out << costo_minimo;
 

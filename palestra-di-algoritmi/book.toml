@@ -1,6 +1,9 @@
 [book]
 authors = ["pietrocipriani"]
-language = "en"
+language = "in"
 multilingual = false
 src = "src"
-title = "."
+title = "Palestra di Algoritmi"
+
+[output.html]
+mathjax-support = true
