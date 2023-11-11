@@ -1,6 +1,9 @@
 # Summary
 
 [Introduzione](./README.md)
+
+---
+
 - [Nozioni](./nozioni/README.md)
     - [Modello della memoria](./nozioni/modello_memoria.md)
         - [Stack](./nozioni/memoria/stack.md)

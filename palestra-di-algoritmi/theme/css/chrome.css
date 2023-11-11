@@ -169,8 +169,8 @@ a > .hljs {
     text-align: center;
     text-decoration: none;
     width: 90px;
-    border-radius: 5px;
-    background-color: var(--sidebar-bg);
+    border-radius: var(--theme-radius, 5px);
+    background-color: var(--theme-hover);
 }
 
 /* Only Firefox supports flow-relative values */
@@ -242,8 +242,8 @@ pre:hover > .buttons {
     opacity: 1
 }
 pre > .buttons :hover {
-    color: var(--sidebar-active);
-    border-color: var(--icons-hover);
+    color: var(--icons-hover);
+    /*border-color: var(--icons-hover);*/
     background-color: var(--theme-hover);
 }
 pre > .buttons i {
@@ -257,7 +257,7 @@ pre > .buttons button {
 
     border-style: solid;
     border-width: 1px;
-    border-radius: 4px;
+    border-radius: var(--theme-radius, 4px);
     border-color: var(--icons);
     background-color: var(--theme-popup-bg);
     transition: 100ms;
@@ -272,6 +272,7 @@ pre > .buttons button {
 }
 pre > code {
     padding: 1rem;
+    border-radius: var(--theme-radius);
 }
 
 /* FIXME: ACE editors overlap their buttons because ACE does absolute
@@ -546,7 +547,7 @@ ul#searchresults span.teaser em {
     left: 10px;
     top: var(--menu-bar-height);
     z-index: 1000;
-    border-radius: 4px;
+    border-radius: var(--theme-radius, 4px);
     font-size: 0.7em;
     color: var(--fg);
     background: var(--theme-popup-bg);

@@ -130,6 +130,7 @@ table td {
 }
 table thead {
     background: var(--table-header-bg);
+    color: var(--table-header-fg);
 }
 table thead td {
     font-weight: 700;
@@ -158,8 +159,9 @@ blockquote {
 
 .warning {
     margin: 20px;
-    padding: 0 20px;
+    padding: 5px 5px;
     border-inline-start: 2px solid var(--warning-border);
+    background-color: var(--quote-bg);
     font-size: 1.2rem;
 }
 
@@ -168,9 +170,9 @@ blockquote {
     width: 3rem;
     height: 3rem;
     margin-inline-start: calc(-1.5rem - 21px);
+    margin-top: -0.8rem;
     content: "⚠";
     text-align: center;
-    background-color: var(--bg);
     color: var(--warning-border);
     font-weight: bold;
     font-size: 2rem;
@@ -178,8 +180,9 @@ blockquote {
 
 .info {
     margin: 20px;
-    padding: 0 20px;
-    border-inline-start: 2px solid var(--quote-border);
+    padding: 5px 5px;
+    border-inline-start: 2px solid var(--info-border, var(--warning-border));
+    background-color: var(--quote-bg);
     font-size: 1.2rem;
 }
 
@@ -188,10 +191,10 @@ blockquote {
     width: 3rem;
     height: 3rem;
     margin-inline-start: calc(-1.5rem - 21px);
+    margin-top: -0.8rem;
     content: "ⓘ";
     text-align: center;
-    background-color: var(--bg);
-    color: var(--quote-border);
+    color: var(--info-border, var(--warning-border));
     font-weight: bold;
     font-size: 2rem;
 }

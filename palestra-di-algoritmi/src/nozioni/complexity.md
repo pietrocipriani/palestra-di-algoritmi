@@ -53,7 +53,8 @@ Per quanto riguarda il caso ottimo: non possiamo aspettarci che il CMS (il progr
 Quindi il nostro obiettivo sarà quello di ottimizzare il **caso pessimo**.
 
 <div class="warning">
-Un algoritmo con caso pessimo peggiore di un altro può in realtà essere migliore nella maggioranza dei casi!
+Un algoritmo con caso pessimo peggiore di un altro può in realtà essere migliore nella maggioranza dei casi!</br>
+Si vedano le <a href="#osservazioni">osservazioni</a>.
 </div>
 
 ## Come stabilire la classe di complessità
@@ -91,3 +92,20 @@ Vi sono anche altre classi. A noi interessano principalmente fino alla _polinomi
 
 Vi invito ad usare calcolatrici grafiche ([geogebra](https://www.geogebra.org/calculator), [desmos](https://www.desmos.com/calculator) ecc) per visualizzare l'andamento delle varie funzioni.\
 Potete anche inserire dei coefficienti per osservare che a lungo andare non cambiano la situazione.
+
+# Osservazioni
+
+Facendo riferimento al problema [Trova il massimo](https://training.olinfo.it/#/task/easy1/statement) e alle varie [soluzioni](https://github.com/pietrocipriani/palestra-di-algoritmi/tree/master/esercizi/day1/0_easy1/C%2B%2B) proposte.
+
+Creando 3 input da 2 milioni di elementi, il primo con una sequenza "**casuale**", il secondo con sequenza **crescente** ed il terzo con sequenza **decrescente** è stato possibile ricavare delle informazioni interessanti riguardo ai vari algoritmi.\
+Si riporta la tabella relativa ai risultati:
+
+|Algoritmo|Casuale|Crescente|Decrescente|
+|:---------|:-------:|:---------:|:-----------:|
+|[Quadratico](https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/0_soluzione_TN2_SN.cpp)|350 ms|1h 15min|230 ms|
+|[Quasi-lineare](https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/1_soluzione_TNlogN_SN.cpp)|610 ms|350 ms|320 ms|
+|[Lineare](https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/3_soluzione_TN_S1.cpp)|260 ms|220 ms|230 ms|
+
+Gli input sono stati scelti appositamente e rappresentano il caso "medio", pessimo e ottimo del primo algoritmo.
+
+È possibile osservare che, mentre gli altri algoritmi sono pressochè stabili, il primo algoritmo ha un caso pessimo decisamente molto più lento del caso medio: la differenza è dovuta dal fatto che in realtà l'algoritmo "quadratico" è **quasi-lineare** nel caso medio.

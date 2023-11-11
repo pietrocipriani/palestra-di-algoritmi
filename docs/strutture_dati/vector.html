@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="in" class="light" dir="ltr">
+<html lang="in" class="rust" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
@@ -38,7 +37,7 @@
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "rust";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -63,7 +62,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('light')
+            html.classList.remove('rust')
             html.classList.add(theme);
             var body = document.querySelector('body');
             body.classList.remove('no-js')
@@ -90,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Introduzione</a></li><li class="chapter-item "><a href="../nozioni/index.html"><strong aria-hidden="true">1.</strong> Nozioni</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nozioni/modello_memoria.html"><strong aria-hidden="true">1.1.</strong> Modello della memoria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nozioni/memoria/stack.html"><strong aria-hidden="true">1.1.1.</strong> Stack</a></li><li class="chapter-item "><a href="../nozioni/memoria/heap.html"><strong aria-hidden="true">1.1.2.</strong> Heap</a></li></ol></li><li class="chapter-item "><a href="../nozioni/complexity.html"><strong aria-hidden="true">1.2.</strong> Complessità computazionale</a></li></ol></li><li class="chapter-item expanded "><a href="../strutture_dati/index.html"><strong aria-hidden="true">2.</strong> Strutture Dati</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../strutture_dati/vector.html" class="active"><strong aria-hidden="true">2.1.</strong> Vettori</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.2.</strong> Liste</div></li><li class="chapter-item "><a href="../strutture_dati/queue.html"><strong aria-hidden="true">2.3.</strong> Code</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.4.</strong> Grafi</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">2.4.1.</strong> Visite</div></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">2.5.</strong> Code di priorità</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.6.</strong> Grafi pesati</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.7.</strong> Stack</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.8.</strong> Insiemi</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.9.</strong> Dizionari</div></li></ol></li><li class="chapter-item "><a href="../tecniche/index.html"><strong aria-hidden="true">3.</strong> Tecniche</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../tecniche/backtracking.html"><strong aria-hidden="true">3.1.</strong> Backtracking</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.2.</strong> Divide et Impera</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.3.</strong> Greedy</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.4.</strong> Memoization</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.5.</strong> Programmazione dinamica</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.6.</strong> Branch and Bound</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Ricerca locale</div></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">Introduzione</a></li><li class="spacer"></li><li class="chapter-item "><a href="../nozioni/index.html"><strong aria-hidden="true">1.</strong> Nozioni</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nozioni/modello_memoria.html"><strong aria-hidden="true">1.1.</strong> Modello della memoria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../nozioni/memoria/stack.html"><strong aria-hidden="true">1.1.1.</strong> Stack</a></li><li class="chapter-item "><a href="../nozioni/memoria/heap.html"><strong aria-hidden="true">1.1.2.</strong> Heap</a></li></ol></li><li class="chapter-item "><a href="../nozioni/complexity.html"><strong aria-hidden="true">1.2.</strong> Complessità computazionale</a></li></ol></li><li class="chapter-item expanded "><a href="../strutture_dati/index.html"><strong aria-hidden="true">2.</strong> Strutture Dati</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../strutture_dati/vector.html" class="active"><strong aria-hidden="true">2.1.</strong> Vettori</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.2.</strong> Liste</div></li><li class="chapter-item "><a href="../strutture_dati/queue.html"><strong aria-hidden="true">2.3.</strong> Code</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.4.</strong> Grafi</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">2.4.1.</strong> Visite</div></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">2.5.</strong> Code di priorità</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.6.</strong> Grafi pesati</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.7.</strong> Stack</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.8.</strong> Insiemi</div></li><li class="chapter-item "><div><strong aria-hidden="true">2.9.</strong> Dizionari</div></li></ol></li><li class="chapter-item "><a href="../tecniche/index.html"><strong aria-hidden="true">3.</strong> Tecniche</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../tecniche/backtracking.html"><strong aria-hidden="true">3.1.</strong> Backtracking</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.2.</strong> Divide et Impera</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.3.</strong> Greedy</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.4.</strong> Memoization</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.5.</strong> Programmazione dinamica</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.6.</strong> Branch and Bound</div></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Ricerca locale</div></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -132,6 +131,7 @@
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="gruvbox-light">Gruvbox Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
@@ -144,8 +144,8 @@
                     <h1 class="menu-title">Palestra di Algoritmi</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                        <a href="https://github.com/pietrocipriani/palestra-di-algoritmi" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
                     </div>
@@ -174,22 +174,22 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="vettori"><a class="header" href="#vettori">Vettori</a></h1>
-<p>I vettori in C++ sono dei contenitori (<em>container</em>) che si comportano in modo simile agli array, ma che hanno dimensione dinamica e possono essere ridimensionati. Per creare un vettore contenente elementi di tipo <code>TIPO</code> si scrive <code>vector&lt;TIPO&gt;</code>.</p>
+<p>I vettori in C++ sono dei contenitori (<em>container</em>) che si comportano in modo simile agli array, ma che hanno dimensione dinamica e possono essere ridimensionati. Per creare un vettore contenente elementi di tipo <code class="hljs language-cpp">TIPO</code> si scrive <code class="hljs language-cpp">vector&lt;TIPO&gt;</code>.</p>
 <p>Memorizzano una serie di elementi uno dietro l'altro in memoria. È possibile accedere gli elementi in base all'<em>indice</em>: il numero dell'elemento (primo, secondo ecc).</p>
-<p>I vector sono indicizzati da 0. Ossia il primo elemento corrisponde all'indice <code>0</code>, l'N-esimo elemento all'indice <code>N-1</code>.</p>
+<p>I vector sono indicizzati da 0. Ossia il primo elemento corrisponde all'indice <code class="hljs language-cpp">0</code>, l'N-esimo elemento all'indice <code class="hljs language-cpp">N-1</code>.</p>
 <h2 id="inizializzazione"><a class="header" href="#inizializzazione">Inizializzazione</a></h2>
-<p>L'inizializzazione di una variabile di tipo <code>vector</code> si può fare nei seguenti modi (attenzione alle parentesi usate!):</p>
+<p>L'inizializzazione di una variabile di tipo <code class="hljs language-cpp">vector</code> si può fare nei seguenti modi (attenzione alle parentesi usate!):</p>
 <ul>
-<li><code>vector&lt;TIPO&gt; nomeVariabile;</code> crea un vettore vuoto di elementi di tipo <code>TIPO</code> (ad es. <code>vector&lt;float&gt; valori</code>)</li>
-<li><code>vector&lt;TIPO&gt; nomeVariabile(DIMENSIONE, VALORE);</code> crea un vettore con al suo interno il numero <code>DIMENSIONE</code> di elementi di tipo <code>TIPO</code> inizializzati al valore <code>VALORE</code> (ad es. <code>vector&lt;int&gt; classifica(158, 1)</code>)</li>
-<li><code>vector&lt;TIPO&gt; nomeVariabile{ELEMENTO_1, ELEMENTO_2, ...};</code> crea un vettore di tipo <code>TIPO</code> contenente gli elementi <code>ELEMENTO_1</code>, <code>ELEMENTO_2</code>, ... (ad es. <code>vector&lt;string&gt; nomi{&quot;Pippo&quot;, &quot;Pluto&quot;, &quot;Topolino&quot;}</code>)</li>
+<li><code class="hljs language-cpp">vector&lt;TIPO&gt; nomeVariabile</code> crea un vettore vuoto di elementi di tipo <code class="hljs language-cpp">TIPO</code> (ad es. <code class="hljs language-cpp">vector&lt;float&gt; valori</code>)</li>
+<li><code class="hljs language-cpp">vector&lt;TIPO&gt; nomeVariabile(DIMENSIONE, VALORE);</code> crea un vettore con al suo interno il numero <code class="hljs language-cpp">DIMENSIONE</code> di elementi di tipo <code class="hljs language-cpp">TIPO</code> inizializzati al valore <code class="hljs language-cpp">VALORE</code> (ad es. <code class="hljs language-cpp">vector&lt;int&gt; classifica(158, 1)</code>)</li>
+<li><code class="hljs language-cpp">vector&lt;TIPO&gt; nomeVariabile{ELEMENTO_1, ELEMENTO_2, ...};</code> crea un vettore di tipo <code class="hljs language-cpp">TIPO</code> contenente gli elementi <code class="hljs language-cpp">ELEMENTO_1</code>, <code class="hljs language-cpp">ELEMENTO_2</code>, ... (ad es. <code class="hljs language-cpp">vector&lt;string&gt; nomi{&quot;Pippo&quot;, &quot;Pluto&quot;, &quot;Topolino&quot;}</code>)</li>
 </ul>
 <h2 id="accesso"><a class="header" href="#accesso">Accesso</a></h2>
-<p>Per accedere agli elementi di un <code>vector</code> ci sono i seguenti modi:</p>
+<p>Per accedere agli elementi di un <code class="hljs language-cpp">vector</code> ci sono i seguenti modi:</p>
 <ul>
-<li><code>v.at(posizione)</code> si usa per accedere all'elemento in posizione <code>posizione+1</code>, poichè gli indici partono da <code>0</code> (funziona come per gli array normali, ad es. <code>v.at(0)</code> restituisce il primo elemento)</li>
-<li><code>v.front()</code> si usa per accedere al primo elemento</li>
-<li><code>v.back()</code> si usa per accedere all'ultimo elemento</li>
+<li><code class="hljs language-cpp">v.at(posizione)</code> si usa per accedere all'elemento in posizione <code class="hljs language-cpp">posizione+1</code>, poichè gli indici partono da <code class="hljs language-cpp">0</code> (funziona come per gli array normali, ad es. <code class="hljs language-cpp">v.at(0)</code> restituisce il primo elemento)</li>
+<li><code class="hljs language-cpp">v.front()</code> si usa per accedere al primo elemento</li>
+<li><code class="hljs language-cpp">v.back()</code> si usa per accedere all'ultimo elemento</li>
 </ul>
 <pre><code class="language-cpp">vector&lt;int&gt; pesi{4, 7, 9, 8};
 // scrive in output 4798 48
@@ -198,11 +198,11 @@ cout &lt;&lt; pesi.at(0) &lt;&lt; pesi.at(1) &lt;&lt; pesi.at(2) &lt;&lt; pesi.a
 </code></pre>
 <h2 id="aggiunta-di-elementi-e-ridimensionamento"><a class="header" href="#aggiunta-di-elementi-e-ridimensionamento">Aggiunta di elementi e ridimensionamento</a></h2>
 <ul>
-<li><code>v.push_back(ELEMENTO)</code> aggiunge <code>ELEMENTO</code> in fondo al vettore (ad es. <code>v.push_back(42.0)</code>)</li>
-<li><code>v.resize(NUOVA_DIMENSIONE, VALORE)</code> ridimensiona il vettore così che abbia <code>NUOVA_DIMENSIONE</code> elementi. Se <code>NUOVA_DIMENSIONE</code> è maggiore della dimensione che aveva precedentemente, i nuovi elementi vengono inizializzati col valore <code>VALORE</code>. (ad es. <code>v.resize(1000, 0)</code>)</li>
-<li><code>v.reserve(NUOVA_DIMENSIONE)</code> il vettore contiene ancora lo stesso numero di elementi precedenti, tuttavia ha allocato dello &quot;spazio extra&quot; per eventuali ridimensionamenti (vedasi dopo).</li>
-<li><code>v.pop_back()</code> rimuove l'ultimo elemento del vettore</li>
-<li><code>v.size()</code> restituisce il numero di elementi contenuti nel vettore</li>
+<li><code class="hljs language-cpp">v.push_back(ELEMENTO)</code> aggiunge <code class="hljs language-cpp">ELEMENTO</code> in fondo al vettore (ad es. <code class="hljs language-cpp">v.push_back(42.0)</code>)</li>
+<li><code class="hljs language-cpp">v.resize(NUOVA_DIMENSIONE, VALORE)</code> ridimensiona il vettore così che abbia <code class="hljs language-cpp">NUOVA_DIMENSIONE</code> elementi. Se <code class="hljs language-cpp">NUOVA_DIMENSIONE</code> è maggiore della dimensione che aveva precedentemente, i nuovi elementi vengono inizializzati col valore <code class="hljs language-cpp">VALORE</code>. (ad es. <code class="hljs language-cpp">v.resize(1000, 0)</code>)</li>
+<li><code class="hljs language-cpp">v.reserve(NUOVA_DIMENSIONE)</code> il vettore contiene ancora lo stesso numero di elementi precedenti, tuttavia ha allocato dello &quot;spazio extra&quot; per eventuali ridimensionamenti (vedasi dopo).</li>
+<li><code class="hljs language-cpp">v.pop_back()</code> rimuove l'ultimo elemento del vettore</li>
+<li><code class="hljs language-cpp">v.size()</code> restituisce il numero di elementi contenuti nel vettore</li>
 </ul>
 <pre><code class="language-cpp">vector&lt;string&gt; citta{&quot;Trento&quot;, &quot;Bolzano&quot;, &quot;Milano&quot;, &quot;Sorne&quot;};
 // scrive 4 Trento Sorne
@@ -226,20 +226,20 @@ La variabile di tipo <code>vector</code> salva nello stack solo le informazioni 
 <code>vector</code> memorizza gli elementi uno dietro l'altro in un'area contigua di memoria heap.
 </div>
 <p>Nella memoria heap abbiamo però detto che si può scrivere qualsiasi cosa, negli spazi vuoti.<br />
-Ipotizziamo dunque di voler fare un <code>push_back</code> quando è già stato scritto qualcos'altro poco dopo la fine del nostro vettore: per potersi ingrandire, il <code>vector</code> è obbligato a dover cercare uno spazio vuoto più grande.<br />
-Deve dunque <strong>copiare</strong> tutti gli elementi già presenti nella nuova area di memoria: ciò è MOLTO costoso, tuttavia il <code>vector</code> è stato pensato in modo da minimizzare il numero di ridimensionamenti, richiedendo un po' più di memoria.</p>
+Ipotizziamo dunque di voler fare un <code class="hljs language-cpp">push_back</code> quando è già stato scritto qualcos'altro poco dopo la fine del nostro vettore: per potersi ingrandire, il <code class="hljs language-cpp">vector</code> è obbligato a dover cercare uno spazio vuoto più grande.<br />
+Deve dunque <strong>copiare</strong> tutti gli elementi già presenti nella nuova area di memoria: ciò è MOLTO costoso, tuttavia il <code class="hljs language-cpp">vector</code> è stato pensato in modo da minimizzare il numero di ridimensionamenti, richiedendo un po' più di memoria.</p>
 <p>Tuttavia è buona pratica, quando si conosce il numero di elementi, dire al vettore quanto spazio occupare. Abbiamo 3 modi per farlo:</p>
 <ul>
-<li>con il <code>reserve</code>: fintantochè il numero di elementi non supera la dimensione effettiva del vettore, chiamate a <code>push_back</code> non provocheranno nessuna copia (riallocamento).</li>
-<li>Con il <code>resize</code>: il vettore acquisisce effettivamente una dimensione di <code>DIMENSIONE</code>, eventuali <code>push_back</code> cercheranno di incrementare <strong>ulteriormente</strong> la dimensione. In questo caso dovete limitarvi ad <strong>assegnare</strong> gli elementi già presenti!</li>
-<li>In fase di dichiarazione, specificando <code>DIMENSIONE</code>. Valgono le stesse osservazioni di <code>resize</code>.</li>
+<li>con il <code class="hljs language-cpp">reserve</code>: fintantochè il numero di elementi non supera la dimensione effettiva del vettore, chiamate a <code class="hljs language-cpp">push_back</code> non provocheranno nessuna copia (riallocamento).</li>
+<li>Con il <code class="hljs language-cpp">resize</code>: il vettore acquisisce effettivamente una dimensione di <code class="hljs language-cpp">DIMENSIONE</code>, eventuali <code class="hljs language-cpp">push_back</code> cercheranno di incrementare <strong>ulteriormente</strong> la dimensione. In questo caso dovete limitarvi ad <strong>assegnare</strong> gli elementi già presenti!</li>
+<li>In fase di dichiarazione, specificando <code class="hljs language-cpp">DIMENSIONE</code>. Valgono le stesse osservazioni di <code class="hljs language-cpp">resize</code>.</li>
 </ul>
-<p>Vedremo più avanti altri modi di implementare una <code>list</code>a di elementi in modo da ovviare alla problematica dell'allocazione (vengono introdotti altri problemi).</p>
+<p>Vedremo più avanti altri modi di implementare una <code class="hljs language-cpp">list</code>a di elementi in modo da ovviare alla problematica dell'allocazione (vengono introdotti altri problemi).</p>
 <div class="info">
 ndr: <code>list</code> in Python è un <i>array dinamico</i>: è implementato come un <code>vector</code>.
 </div>
 <h2 id="scorrere-un-vettore"><a class="header" href="#scorrere-un-vettore">Scorrere un vettore</a></h2>
-<p>Per scorrere tutti gli elementi di un <code>vector</code> si può usare un normale <code>for</code> come si farebbe per gli array normali. La variabile <code>i</code> del ciclo va da <code>0</code> a <code>numeri.size()</code> (non compreso) e quindi tocca, in ordine, tutti gli elementi di <code>numeri</code>.</p>
+<p>Per scorrere tutti gli elementi di un <code class="hljs language-cpp">vector</code> si può usare un normale <code class="hljs language-cpp">for</code> come si farebbe per gli array normali. La variabile <code class="hljs language-cpp">i</code> del ciclo va da <code class="hljs language-cpp">0</code> a <code class="hljs language-cpp">numeri.size()</code> (non compreso) e quindi tocca, in ordine, tutti gli elementi di <code class="hljs language-cpp">numeri</code>.</p>
 <pre><code class="language-cpp">vector&lt;float&gt; numeri{3.14, 2.78, 1+2.1, 3*1.12};
 for(int i = 0; i &lt; numeri.size(); ++i) {
 	cout &lt;&lt; &quot;In posizione &quot; &lt;&lt; i &lt;&lt; &quot; c'e' il numero &quot; &lt;&lt; numeri.at(i) &lt;&lt; endl;
@@ -255,13 +255,13 @@ for (float numero : numeri) {
 </code></pre>
 <p>Tale modalità di iterazione potrà essere più efficiente per certi tipi di collezioni che vedremo più avanti.<br />
 Tuttavia non permette di sapere a che elemento siamo arrivati (salvo contare manualmente in una variabile esterna).<br />
-In questo caso è possibile fare la copia di <code>numero</code> senza troppi problemi, dato che è un <code>float</code>.<br />
-Nel caso <code>numero</code> fosse stato di un tipo molto più &quot;grosso&quot; è sicuramente meglio predere un <strong>riferimento</strong> (<code>TIPO&amp; numero</code>).</p>
+In questo caso è possibile fare la copia di <code class="hljs language-cpp">numero</code> senza troppi problemi, dato che è un <code class="hljs language-cpp">float</code>.<br />
+Nel caso <code class="hljs language-cpp">numero</code> fosse stato di un tipo molto più &quot;grosso&quot; è sicuramente meglio predere un <strong>riferimento</strong> (<code class="hljs language-cpp">TIPO&amp; numero</code>).</p>
 <h2 id="passare-un-vettore-ad-una-funzione"><a class="header" href="#passare-un-vettore-ad-una-funzione">Passare un vettore ad una funzione</a></h2>
-<p>Ovviamente i <code>vector</code> sono dei tipi come altri, quindi possono essere passati come parametro di una funzione senza problemi.<br />
+<p>Ovviamente i <code class="hljs language-cpp">vector</code> sono dei tipi come altri, quindi possono essere passati come parametro di una funzione senza problemi.<br />
 Però, quando un parametro viene passato ad una funzione, esso viene copiato per fare in modo che la funzione non possa modificare la copia originale di quella variabile ma riceva una copia tutta per sè.<br />
-Poichè i <code>vector</code> possono essere costosi da copiare, conviene prevenirlo mettendo una <code>&amp;</code> dopo il tipo del parametro della funzione, per dire al compilatore di passare tale parametro <em>per reference</em>, ovvero non copiarlo.<br />
-Però passare parametri alle funzioni senza copiarli può permettere alle funzioni di modificare le variabili che passiamo loro; se vogliamo evitare ciò (ad esempio perchè una funzione che scrive a schermo non deve modificare il contenuto del vettore che gli passiamo) possiamo mettere un <code>const</code> prima del tipo del parametro.</p>
+Poichè i <code class="hljs language-cpp">vector</code> possono essere costosi da copiare, conviene prevenirlo mettendo una <code class="hljs language-cpp">&amp;</code> dopo il tipo del parametro della funzione, per dire al compilatore di passare tale parametro <em>per reference</em>, ovvero non copiarlo.<br />
+Però passare parametri alle funzioni senza copiarli può permettere alle funzioni di modificare le variabili che passiamo loro; se vogliamo evitare ciò (ad esempio perchè una funzione che scrive a schermo non deve modificare il contenuto del vettore che gli passiamo) possiamo mettere un <code class="hljs language-cpp">const</code> prima del tipo del parametro.</p>
 <pre><code class="language-cpp">// quando questa funzione viene chiamata, il vettore passato
 // al posto di `v` viene copiato (operazione costosa)
 void printVettore(vector&lt;int&gt; v) {
@@ -313,12 +313,12 @@ int main() {
 <h2 id="esercizi"><a class="header" href="#esercizi">Esercizi</a></h2>
 <ul>
 <li>Scrivi un programma che chiede all'utente dei numeri finchè non viene inserito -1 e poi li scrive nell'ordine opposto in cui sono stati inseriti (attenzione agli indici!).</li>
-<li>Scrivi un programma che chiede all'utente dei numeri finchè non viene inserito -1, e ad ogni numero <code>i</code> che viene fornito dall'utente, scriva in output l<code>i-1</code>-esimo numero che l'utente ha inserito (oppure -1 se tale numero non esiste). Ad esempio, se inserisco, in ordine, <code>5 0 1 4 3</code>, il programma dovrebbe scrivermi, in ordine, <code>-1 5 0 -1 4</code>.</li>
-<li>Scrivi una funzione che, preso come parametro un vettore di numeri (attenzione a fare in modo che questo vettore non venga copiato), ne calcola il minimo e il massimo e li ritorna in un <code>pair&lt;&gt;</code>. La <em>signature</em> della funzione sarebbe quindi qualcosa come <code>pair&lt;int, int&gt; f(vector&lt;int&gt;&amp; v)</code>.</li>
-<li>(difficile) Scrivi una funzione che calcola la lunghezza di una linea spezzata a partire dal vettore di punti che la compongono. Si possono fare infatti anche dei <code>vector</code> di <code>pair</code> in questo modo: <code>vector&lt;pair&lt;float, float&gt;&gt;</code>.</li>
+<li>Scrivi un programma che chiede all'utente dei numeri finchè non viene inserito -1, e ad ogni numero <code class="hljs language-cpp">i</code> che viene fornito dall'utente, scriva in output l<code class="hljs language-cpp">i-1</code>-esimo numero che l'utente ha inserito (oppure -1 se tale numero non esiste). Ad esempio, se inserisco, in ordine, <code class="hljs language-cpp">5 0 1 4 3</code>, il programma dovrebbe scrivermi, in ordine, <code class="hljs language-cpp">-1 5 0 -1 4</code>.</li>
+<li>Scrivi una funzione che, preso come parametro un vettore di numeri (attenzione a fare in modo che questo vettore non venga copiato), ne calcola il minimo e il massimo e li ritorna in un <code class="hljs language-cpp">pair&lt;&gt;</code>. La <em>signature</em> della funzione sarebbe quindi qualcosa come <code class="hljs language-cpp">pair&lt;int, int&gt; f(vector<int>&amp; v)</code>.</li>
+<li>(difficile) Scrivi una funzione che calcola la lunghezza di una linea spezzata a partire dal vettore di punti che la compongono. Si possono fare infatti anche dei <code class="hljs language-cpp">vector</code> di <code class="hljs language-cpp">pair</code> in questo modo: <code class="hljs language-cpp">vector&lt;pair&lt;float, float&gt;&gt;</code>.</li>
 </ul>
 <h2 id="problemi"><a class="header" href="#problemi">Problemi</a></h2>
-<p>Questi problemi si possono probabilmente risolvere anche senza usare <code>vector</code>, ma cercate di usarlo per allenamento!</p>
+<p>Questi problemi si possono probabilmente risolvere anche senza usare <code class="hljs language-cpp">vector</code>, ma cercate di usarlo per allenamento!</p>
 <ul>
 <li>Kattis: <a href="https://open.kattis.com/problems/peasoup">peasoup</a>, <a href="https://open.kattis.com/contests/wg4y5t/problems/missingnumbers">missingnumbers</a>, <a href="https://open.kattis.com/problems/eventplanning">eventplanning</a>, <a href="https://open.kattis.com/problems/basicprogramming1">basicprogramming1</a></li>
 </ul>
@@ -352,22 +352,6 @@ int main() {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

@@ -1,6 +1,6 @@
 # Vettori
 
-I vettori in C++ sono dei contenitori (*container*) che si comportano in modo simile agli array, ma che hanno dimensione dinamica e possono essere ridimensionati. Per creare un vettore contenente elementi di tipo `TIPO` si scrive `vector<TIPO>`.
+I vettori in C++ sono dei contenitori (*container*) che si comportano in modo simile agli array, ma che hanno dimensione dinamica e possono essere ridimensionati. Per creare un vettore contenente elementi di tipo `TIPO` si scrive `vector\<TIPO\>`.
 
 Memorizzano una serie di elementi uno dietro l'altro in memoria. È possibile accedere gli elementi in base all'_indice_: il numero dell'elemento (primo, secondo ecc).
 
@@ -9,9 +9,9 @@ I vector sono indicizzati da 0. Ossia il primo elemento corrisponde all'indice `
 ## Inizializzazione
 
 L'inizializzazione di una variabile di tipo `vector` si può fare nei seguenti modi (attenzione alle parentesi usate!):
-- `vector<TIPO> nomeVariabile;` crea un vettore vuoto di elementi di tipo `TIPO` (ad es. `vector<float> valori`)
-- `vector<TIPO> nomeVariabile(DIMENSIONE, VALORE);` crea un vettore con al suo interno il numero `DIMENSIONE` di elementi di tipo `TIPO` inizializzati al valore `VALORE` (ad es. `vector<int> classifica(158, 1)`)
-- `vector<TIPO> nomeVariabile{ELEMENTO_1, ELEMENTO_2, ...};` crea un vettore di tipo `TIPO` contenente gli elementi `ELEMENTO_1`, `ELEMENTO_2`, ... (ad es. `vector<string> nomi{"Pippo", "Pluto", "Topolino"}`)
+- `vector\<TIPO\> nomeVariabile` crea un vettore vuoto di elementi di tipo `TIPO` (ad es. `vector\<float\> valori`)
+- `vector\<TIPO\> nomeVariabile(DIMENSIONE, VALORE);` crea un vettore con al suo interno il numero `DIMENSIONE` di elementi di tipo `TIPO` inizializzati al valore `VALORE` (ad es. `vector\<int\> classifica(158, 1)`)
+- `vector\<TIPO\> nomeVariabile{ELEMENTO_1, ELEMENTO_2, ...};` crea un vettore di tipo `TIPO` contenente gli elementi `ELEMENTO_1`, `ELEMENTO_2`, ... (ad es. `vector\<string\> nomi{"Pippo", "Pluto", "Topolino"}`)
 
 ## Accesso
 
