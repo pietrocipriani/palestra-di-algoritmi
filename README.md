@@ -11,3 +11,7 @@ Nei vari file ci sono
 - **problemi** dalle varie piattaforme di competitive programming online per allenarsi.
 
 Per informazioni sulle singole cartelle leggere i _README.md_ relativi.
+
+## TEORIA
+
+La teoria è consultabile [qui](https://pietrocipriani.github.io/palestra-di-algoritmi) sotto forma di capitoli.
