@@ -135,6 +135,7 @@
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="gruvbox-dark">Gruvbox Dark</button></li>
                         </ul>
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
@@ -252,11 +253,36 @@ Potete anche inserire dei coefficienti per osservare che a lungo andare non camb
 <p>Facendo riferimento al problema <a href="https://training.olinfo.it/#/task/easy1/statement">Trova il massimo</a> e alle varie <a href="https://github.com/pietrocipriani/palestra-di-algoritmi/tree/master/esercizi/day1/0_easy1/C%2B%2B">soluzioni</a> proposte.</p>
 <p>Creando 3 input da 2 milioni di elementi, il primo con una sequenza &quot;<strong>casuale</strong>&quot;, il secondo con sequenza <strong>crescente</strong> ed il terzo con sequenza <strong>decrescente</strong> è stato possibile ricavare delle informazioni interessanti riguardo ai vari algoritmi.<br />
 Si riporta la tabella relativa ai risultati:</p>
-<p>|Algoritmo|Casuale|Crescente|Decrescente|
-|:---------|:-------:|:---------:|:-----------:|
-|<a href="https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/0_soluzione_TN2_SN.cpp">Quadratico</a>|350 ms|1h 15min|230 ms|
-|<a href="https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/1_soluzione_TNlogN_SN.cpp">Quasi-lineare</a>|610 ms|350 ms|320 ms|
-|<a href="https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/3_soluzione_TN_S1.cpp">Lineare</a>|260 ms|220 ms|230 ms|</p>
+<table>
+    <thead>
+        <tr>
+            <th style="text-align: left">Algoritmo</th>
+            <th style="text-align: center">Casuale</th>
+            <th style="text-align: center">Crescente</th>
+            <th style="text-align: center">Decrescente</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: left"><a href="https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/0_soluzione_TN2_SN.cpp">Quadratico</a></td>
+            <td style="text-align: center">350 ms</td>
+            <td style="text-align: center">1h 15min</td>
+            <td style="text-align: center">230 ms</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><a href="https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/1_soluzione_TNlogN_SN.cpp">Quasi-lineare</a></td>
+            <td style="text-align: center">610 ms</td>
+            <td style="text-align: center">350 ms</td>
+            <td style="text-align: center">320 ms</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><a href="https://github.com/pietrocipriani/palestra-di-algoritmi/blob/master/esercizi/day1/0_easy1/C%2B%2B/3_soluzione_TN_S1.cpp">Lineare</a></td>
+            <td style="text-align: center">260 ms</td>
+            <td style="text-align: center">220 ms</td>
+            <td style="text-align: center">230 ms</td>
+        </tr>
+    </tbody>
+</table>
 <p>Gli input sono stati scelti appositamente e rappresentano il caso &quot;medio&quot;, pessimo e ottimo del primo algoritmo.</p>
 <p>È possibile osservare che, mentre gli altri algoritmi sono pressochè stabili, il primo algoritmo ha un caso pessimo decisamente molto più lento del caso medio: la differenza è dovuta dal fatto che in realtà l'algoritmo &quot;quadratico&quot; è <strong>quasi-lineare</strong> nel caso medio.</p>
 
@@ -289,6 +315,22 @@ Si riporta la tabella relativa ai risultati:</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
