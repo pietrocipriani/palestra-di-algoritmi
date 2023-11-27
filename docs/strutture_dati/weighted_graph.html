@@ -208,9 +208,11 @@ bool operator &lt;(const pair&lt;Distanza, Nodo&gt;&amp; p1, const pair&lt;Dista
 }
 
 void dijkstra(int partenza) {
+    using Q = pair&lt;Distanza, Nodo&gt;;
+    
     // La lista dei nodi in coda.
     // `Distanza` prima di `Nodo`: fino a C++20 la `pair` è ordinata in ordine lessicografico: viene prima ordinato secondo `first` e se uguale secondo `second`.
-    priority_queue&lt;pair&lt;Distanza, Nodo&gt;&gt; coda;
+    priority_queue&lt;Q, vector&lt;Q&gt;, greater&lt;Q&gt;&gt; coda;
 
     // Inseriamo il nodo di `partenza`: è in lista di attesa per essere visitato a distanza 0.
     coda.push({0, partenza});
@@ -221,9 +223,9 @@ void dijkstra(int partenza) {
     // Finchè la coda non diventa vuota continuiamo a visitare i nodi in attesa.
     while (!coda.empty()) {
         // Analizzo il primo nodo in coda.
-        pair&lt;Distanza, Nodo&gt; p = coda.top();
-        Nodo nodo = p.second;
-        Distanza d = p.first;
+        Q p = coda.top();
+        Nodo&amp; nodo = p.second;
+        Distanza&amp; d = p.first;
 
         // Rimuoviamo il nodo che stiamo analizzando dalla coda.
         coda.pop();
@@ -236,9 +238,9 @@ void dijkstra(int partenza) {
 
         // TODO: faccio qualcosa con questo nodo.
 
-        for (const auto&amp; v : grafo[nodo].vicini) {
-            const Distanza&amp; lunghezza = v.first;
-            const Nodo&amp; vicino = v.second;
+        for (const auto&amp; arco : grafo[nodo].vicini) {
+            const Distanza&amp; lunghezza = arco.first;
+            const Nodo&amp; vicino = arco.second;
 
             // Se il vicino è già stato inserito in coda con distanza inferiore allora lo ignoriamo.
             if (d + lunghezza &gt;= grafo[vicino].distanza) continue;
