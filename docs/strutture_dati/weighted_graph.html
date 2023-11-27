@@ -237,16 +237,16 @@ void dijkstra(int partenza) {
         // TODO: faccio qualcosa con questo nodo.
 
         for (const auto&amp; v : grafo[nodo].vicini) {
-            const Distanza&amp; distanza = v.first;
-            const Nodo&amp; nodo = v.second;
+            const Distanza&amp; lunghezza = v.first;
+            const Nodo&amp; vicino = v.second;
 
             // Se il vicino è già stato inserito in coda con distanza inferiore allora lo ignoriamo.
-            if (d + distanza &gt;= grafo[vicino].distanza) continue;
+            if (d + lunghezza &gt;= grafo[vicino].distanza) continue;
             
             // Inserisco il vicino in coda.
-            coda.push({d + distanza, vicino});
+            coda.push({d + lunghezza, vicino});
             // Segnamo la distanza del nodo in modo da capire se possiamo migliorare o meno la distanza.
-            grafo[vicino].distanza = true;
+            grafo[vicino].distanza = d + lunghezza;
         }
     }
 }
